@@ -6,13 +6,13 @@ import KanjiCard from '../components/KanjiCard';
 const List = () => {
 
     return (
-        <View style={headerStyle.container}>
+        <View style={listStyle.container}>
             <Text>Some list</Text>
         </View>
     );
 };
 
-const headerStyle = StyleSheet.create({
+const listStyle = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',

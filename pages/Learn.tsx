@@ -6,13 +6,13 @@ import KanjiCard from '../components/KanjiCard';
 const Learn = () => {
 
     return (
-        <View style={headerStyle.container}>
-            <KanjiCard kanji="愛"></KanjiCard>
+        <View style={learnStyle.container}>
+            <KanjiCard kanji="所"></KanjiCard>
         </View>
     );
 };
 
-const headerStyle = StyleSheet.create({
+const learnStyle = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',

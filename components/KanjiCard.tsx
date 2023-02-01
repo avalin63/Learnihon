@@ -1,5 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View,  } from 'react-native';
+import { SvgUri } from 'react-native-svg';
+import { Kanji } from '../data/stub';
 
 type KanjiProps = {
     kanji: string;
@@ -33,15 +35,25 @@ const KanjiCard = (props: KanjiProps) => {
     }, []);
 
     return (
-        <View>
-            <View>
-                <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.character}</Text>}</Text>
+        <View style={kanjiCardStyle.container}>
+            <View style={kanjiCardStyle.container}>
+                <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
+                {!loading && (<SvgUri
+                    uri={res.kanji.video.poster}
+                />)}
             </View>
             <View>
-                <Text></Text>
             </View>
         </View>
     );
 };
+
+const kanjiCardStyle = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+})
 
 export default KanjiCard;

@@ -6,13 +6,13 @@ import KanjiCard from '../components/KanjiCard';
 const Playground = () => {
 
     return (
-        <View style={headerStyle.container}>
+        <View style={playgroundStyle.container}>
             <Text>Play !</Text>
         </View>
     );
 };
 
-const headerStyle = StyleSheet.create({
+const playgroundStyle = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',

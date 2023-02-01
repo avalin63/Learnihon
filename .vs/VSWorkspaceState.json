@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\components",
-    "\\data"
+    "\\data",
+    "\\pages"
   ],
-  "SelectedNode": "\\tsconfig.json",
+  "SelectedNode": "\\App.tsx",
   "PreviewInSolutionExplorer": false
 }
