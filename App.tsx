@@ -1,20 +1,39 @@
+﻿import React from 'react';
+
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import List from './pages/List';
+import Learn from './pages/Learn';
+import Playground from './pages/Playground';
+
+import Header from './components/Header';
 
 export default function App() {
+
+    const Tab = createBottomTabNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+        <Header/>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="List" component={List} />
+                <Tab.Screen name="Learn" component={Learn} />
+                <Tab.Screen name="Playground" component={Playground} />
+            </Tab.Navigator>
+        </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+
   },
 });
