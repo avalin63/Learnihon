@@ -7,7 +7,7 @@ const Playground = () => {
 
     return (
         <View style={headerStyle.container}>
-            <KanjiCard kanji="?"></KanjiCard>
+            <Text>Play !</Text>
         </View>
     );
 };

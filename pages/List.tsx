@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import KanjiCard from '../components/KanjiCard';
 
 
-const Header = () => {
+const List = () => {
 
     return (
         <View style={headerStyle.container}>
@@ -20,4 +20,4 @@ const headerStyle = StyleSheet.create({
     }
 })
 
-export default Header;
+export default List;

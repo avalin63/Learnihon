@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import KanjiCard from '../components/KanjiCard';
 
@@ -7,7 +7,7 @@ const Learn = () => {
 
     return (
         <View style={headerStyle.container}>
-            <Text>Play !</Text>
+            <KanjiCard kanji="愛"></KanjiCard>
         </View>
     );
 };
