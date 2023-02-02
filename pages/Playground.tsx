@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import DrawingCanva from '../components/DrawingCanva';
 import KanjiCard from '../components/KanjiCard';
 
 
@@ -7,7 +8,7 @@ const Playground = () => {
 
     return (
         <View style={playgroundStyle.container}>
-            <Text>Play !</Text>
+            <DrawingCanva backgroundImage="https://media.kanjialive.com/kanji_strokes/otozu(reru)_11.svg"/>
         </View>
     );
 };

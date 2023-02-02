@@ -48,7 +48,7 @@ const TabBar = () => {
 
     const Tab = createBottomTabNavigator();
     return (
-            <NavigationContainer >
+            <NavigationContainer>
                 <Tab.Navigator
                 screenOptions={tabOptions}
                 initialRouteName="Learn"
