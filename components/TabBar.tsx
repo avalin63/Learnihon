@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableNativeFeedback, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabBarButtonProps, BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 

@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
     "\\components",
-    "\\data",
     "\\pages"
   ],
-  "SelectedNode": "\\components\\KanjiCard.tsx",
+  "SelectedNode": "\\pages\\Playground.tsx",
   "PreviewInSolutionExplorer": false
 }

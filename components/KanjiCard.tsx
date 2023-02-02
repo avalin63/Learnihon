@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableWithoutFeedback, View, Button, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import KanjiAnswerField from './KanjiAnswerField';
 
@@ -36,7 +36,6 @@ const KanjiCard = (props: KanjiProps) => {
     }, []);
 
     return (
-        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }} accessible={false}>
             <View style={kanjiCardStyle.container}>
 
                 <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
@@ -48,7 +47,6 @@ const KanjiCard = (props: KanjiProps) => {
                 <KanjiAnswerField/>
                 <Button title="OK" color="#FF5C5C" />
             </View>
-        </TouchableWithoutFeedback >
     );
 };
 
@@ -59,15 +57,7 @@ const kanjiCardStyle = StyleSheet.create({
         alignItems: 'center',
         width: "100%",
         height: "100%"
-    },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        width: 200,
-        backgroundColor: "white"
-    },
+    }
 })
 
 export default KanjiCard;

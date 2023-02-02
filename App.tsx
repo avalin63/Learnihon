@@ -1,19 +1,22 @@
 ﻿import React from 'react';
 
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { Keyboard, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import Header from './components/Header';
 import TabBar from './components/TabBar';
 
 export default function App() {
 
-  return (
-    <SafeAreaView style={styles.container}>
-        <Header/>
-        <TabBar/>
-        <StatusBar style="auto" />
-    </SafeAreaView>
+    return (
+    <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }}>
+        <SafeAreaView style={styles.container}>
+            <Header/>
+            <TabBar/>
+            <StatusBar style="auto" />
+        </SafeAreaView>
+    </TouchableWithoutFeedback >
+
   );
 }
 
@@ -29,7 +32,6 @@ const tabOptions = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
-
+        backgroundColor: '#FF5C5C',
   },
 });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Text, SectionList, View, StyleSheet } from 'react-native';
 
 
@@ -17,7 +17,7 @@ const KanjiList = () => {
                 }
             ]}
                 renderItem={
-                    ({item}) => <Text style={kanjiListStyle.item}>{item}</Text>
+                    ({ item }) => <Text style={kanjiListStyle.item}>{item}</Text>
                 }
                 renderSectionHeader={({ section }) => (
                     <Text style={kanjiListStyle.sectionHeader}>{section.title}</Text>

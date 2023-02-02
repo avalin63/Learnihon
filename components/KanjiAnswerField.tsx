@@ -22,6 +22,7 @@ const KanjiAnswerField = () => {
                 value={answer}
                 onFocus={startAnimation}
                 onBlur={stopAnimation}
+                placeholder="Answer here"
             />
         </Animated.View>
     );
@@ -34,7 +35,8 @@ const answerFieldStyle = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         width: 200,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        borderRadius:20
     },
 })
 
