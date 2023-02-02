@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TouchableWithoutFeedback, View, Button, Keyboard } from 'react-native';
 import { SvgUri } from 'react-native-svg';
-import { Kanji } from '../data/stub';
+import KanjiAnswerField from './KanjiAnswerField';
 
 type KanjiProps = {
     kanji: string;
@@ -19,8 +19,6 @@ const KanjiCard = (props: KanjiProps) => {
 
     const [loading, setLoading] = useState(true);
     const [res, setData] = useState(null);
-    const [answer, onChangeText] = React.useState();
-
 
     const fetchData = async () => {
         await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${props.kanji}`, options)
@@ -38,22 +36,19 @@ const KanjiCard = (props: KanjiProps) => {
     }, []);
 
     return (
-        <View style={kanjiCardStyle.container}>
-            <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
-            {!loading && (<SvgUri
-                width="200"
-                uri={res.kanji.video.poster}
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }} accessible={false}>
+            <View style={kanjiCardStyle.container}>
 
-            />)}
-            <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.meaning.english}</Text>}</Text>
-            <TextInput
-                style={kanjiCardStyle.input}
-                onChange={onChangeText}
-                value={answer}
-            > </TextInput>
-
-            <Button title="OK" color="#FF5C5C"></Button>
-        </View>
+                <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
+                {!loading && (<SvgUri
+                    width="200"
+                    uri={res.kanji.video.poster}
+                />)}
+                <Text> {loading ? <Text/> : <Text>{res.kanji.meaning.english}</Text>}</Text>
+                <KanjiAnswerField/>
+                <Button title="OK" color="#FF5C5C" />
+            </View>
+        </TouchableWithoutFeedback >
     );
 };
 
@@ -62,13 +57,16 @@ const kanjiCardStyle = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        width: "100%",
+        height: "100%"
     },
     input: {
         height: 40,
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        width: 200
+        width: 200,
+        backgroundColor: "white"
     },
 })
 

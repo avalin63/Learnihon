@@ -44,15 +44,14 @@ const learnButtonStyle = StyleSheet.create({
     }
 });
 
-const TabBar  = () => {
+const TabBar = () => {
 
     const Tab = createBottomTabNavigator();
-
     return (
             <NavigationContainer >
                 <Tab.Navigator
-                    screenOptions={tabOptions}
-
+                screenOptions={tabOptions}
+                initialRouteName="Learn"
                 >
                     <Tab.Screen
                         options={{
