@@ -1,5 +1,8 @@
 ﻿import React from 'react';
 
+import store from "./redux/store";
+import { Provider } from 'react-redux';
+
 import { StatusBar } from 'expo-status-bar';
 import { Keyboard, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
@@ -9,13 +12,15 @@ import TabBar from './components/TabBar';
 export default function App() {
 
     return (
-    <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }}>
-        <SafeAreaView style={styles.container}>
-            <Header/>
-            <TabBar/>
-            <StatusBar style="auto" />
-        </SafeAreaView>
-    </TouchableWithoutFeedback >
+    <Provider store={store}>
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }}>
+            <SafeAreaView style={styles.container}>
+                <Header/>
+                <TabBar/>
+                <StatusBar style="auto" />
+            </SafeAreaView>
+        </TouchableWithoutFeedback >
+    </Provider>
 
   );
 }

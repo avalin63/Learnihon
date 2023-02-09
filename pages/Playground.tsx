@@ -2,13 +2,18 @@
 import { View, StyleSheet } from 'react-native';
 import DrawingCanva from '../components/DrawingCanva';
 import KanjiPlaygroundList from '../components/KanjiPlaygroundList';
+import { Kanji } from '../model/kanji';
 
 
 const Playground = () => {
-
+    // 親 雨 序 余 貴 郷
     return (
         <View style={playgroundStyle.container}>
-            <KanjiPlaygroundList data={["親", "雨", "序", "余", "貴", "郷", "a", "b", "c", "d", "e", "f", "g"]}/>
+            <KanjiPlaygroundList data={[
+                new Kanji("親", "parent", "https://media.kanjialive.com/kanji_strokes/shita(shii)_16.svg"),
+                new Kanji("雨", "rain", "https://media.kanjialive.com/kanji_strokes/u-ame_8.svg"),
+                new Kanji("貴", "noble", "https://media.kanjialive.com/kanji_strokes/ki-touto(i)_12.svg")
+            ]} />
             <DrawingCanva backgroundImage="https://media.kanjialive.com/kanji_strokes/otozu(reru)_11.svg"/>
         </View>
     );

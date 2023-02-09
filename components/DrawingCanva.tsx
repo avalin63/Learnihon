@@ -1,27 +1,41 @@
-import React, {useRef, useState }  from 'react';
+import React, {useEffect, useRef, useState }  from 'react';
 import { SketchCanvas, SketchCanvasRef } from 'rn-perfect-sketch-canvas';
-import { StyleSheet, Button, View } from 'react-native';
+import { StyleSheet, Button, View, Text } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import Slider  from '@react-native-community/slider'
 
+import { useSelector } from 'react-redux';
+import { Kanji, KanjiMapper } from '../model/kanji';
+
 type DrawingCanvaProps = {
     backgroundImage: string;
-}
+} 
 
 const DrawingCanva = (props: DrawingCanvaProps) => {
 
     const canvasRef = useRef<SketchCanvasRef>(null);
     const [strokeWidth, setStroke] = useState(5);
+    const [isCanvasReady, setIsCanvasReady] = useState(false);
+
+    const selectedKanji = KanjiMapper.SerializedObjectToKanji(useSelector(state => state.kanjiReducer.selectedKanji));
+
+
+    useEffect(() => {
+        if (canvasRef.current) {
+            setIsCanvasReady(true);
+        }
+    }, [canvasRef.current]);
+
 
     return (
         <View style={styles.container}>
-            <SvgUri
+            {selectedKanji && (<SvgUri
                 width="75%"
                 height="75%"
-                uri={props.backgroundImage}
+                uri={selectedKanji.image}
                 style={styles.back}
                 opacity={0.1}
-                />
+            />)}
             <SketchCanvas
                 ref={canvasRef}
                 strokeColor={'black'}
@@ -35,10 +49,10 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
                 maximumValue={10}
                 minimumTrackTintColor={"#FF5C5C"}
             />
-            <View style={styles.menu}>
+            {isCanvasReady && (<View style={styles.menu}>
                 <Button color="#FF5C5C" onPress={canvasRef.current?.reset} title="Reset" />
                 <Button color="#FF5C5C" onPress={canvasRef.current?.undo} title="Undo" />
-            </View>
+            </View>)}
         </View>
     );
 };

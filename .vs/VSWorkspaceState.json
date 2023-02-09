@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
     "\\components",
-    "\\pages"
+    "\\model",
+    "\\redux",
+    "\\redux\\reducers"
   ],
-  "SelectedNode": "\\pages\\Playground.tsx",
+  "SelectedNode": "\\app.json",
   "PreviewInSolutionExplorer": false
 }

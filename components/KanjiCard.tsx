@@ -2,6 +2,7 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import KanjiAnswerField from './KanjiAnswerField';
+import { Kanji, KanjiMapper } from '../model/kanji';
 
 type KanjiProps = {
     kanji: string;

@@ -1,12 +1,19 @@
 import React from 'react';
-import { FlatList, Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { Kanji } from '../model/kanji';
+import { setSelectedKanji } from '../redux/actions/setSelectedKanji';
+
 
 
 interface kanjiPlaygroundListProps {
-    data: string[]
+    data: Kanji[]
 }
 
 const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
+
+    const selectedKanji = useSelector(state => state.kanjiReducer.selectedKanji);
+    const dispatch = useDispatch();
 
     return (
         <View style={kanjiPlaygroundList.container}>
@@ -17,9 +24,9 @@ const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
                 data={props.data}
                 renderItem={
                     ({ item }) => (
-                        <View style={kanjiPlaygroundList.entry}  onStartShouldSetResponder={() => true}>
-                            <Text style={kanjiPlaygroundList.entryText}>{item}</Text>
-                        </View>
+                        <TouchableOpacity onPress={() => dispatch(setSelectedKanji(item))} style={kanjiPlaygroundList.entry}>
+                            <Text style={kanjiPlaygroundList.entryText}>{item.character}</Text>
+                        </TouchableOpacity>
                     )
                 }
                 keyExtractor={item => `basicListEntry-${item}`}>
