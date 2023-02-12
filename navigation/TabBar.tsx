@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, TouchableNativeFeedback, View } from 'react-native'
+import { StyleSheet, TouchableNativeFeedback, useColorScheme, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabBarButtonProps, BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -13,7 +13,10 @@ import List from '../pages/List';
 import Playground from '../pages/Playground';
 
 
+
 const LearnButton = (props: BottomTabBarButtonProps) => {
+
+    const learnButtonStyle = useColorScheme() == 'light' ? learnButtonStyle_light : learnButtonStyle_dark;
 
     return (
         <View
@@ -33,13 +36,24 @@ const LearnButton = (props: BottomTabBarButtonProps) => {
 
 }
 
-const learnButtonStyle = StyleSheet.create({
+const learnButtonStyle_light = StyleSheet.create({
     button: {
         backgroundColor: "#FF5C5C",
         width: 80,
         height: 80,
         borderRadius: 40,
         borderColor: "#f5f5f4",
+        borderWidth: 5
+    }
+});
+
+const learnButtonStyle_dark = StyleSheet.create({
+    button: {
+        backgroundColor: "#FF5C5C",
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        borderColor: "#2b2b2b",
         borderWidth: 5
     }
 });

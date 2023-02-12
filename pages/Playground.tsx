@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, useColorScheme } from 'react-native';
 import DrawingCanva from '../components/DrawingCanva';
 import KanjiPlaygroundList from '../components/KanjiPlaygroundList';
 import { Kanji } from '../model/kanji';
@@ -7,6 +7,9 @@ import { Kanji } from '../model/kanji';
 
 const Playground = () => {
     // 親 雨 序 余 貴 郷
+
+    const playgroundStyle = useColorScheme() == 'light' ? playgroundStyle_light : playgroundStyle_dark;
+
     return (
         <View style={playgroundStyle.container}>
             <KanjiPlaygroundList data={[
@@ -19,7 +22,7 @@ const Playground = () => {
     );
 };
 
-const playgroundStyle = StyleSheet.create({
+const playgroundStyle_light = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -28,5 +31,18 @@ const playgroundStyle = StyleSheet.create({
 
     }
 })
+
+
+const playgroundStyle_dark = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2B2B2B',
+    },
+});
+
+
+
 
 export default Playground; 

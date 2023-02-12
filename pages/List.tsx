@@ -1,9 +1,11 @@
 import React  from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, useColorScheme } from 'react-native';
 import KanjiList from '../components/KanjiList';
 
 
 const List = () => {
+    
+    const listStyle = useColorScheme() == 'light' ? listStyle_light : listStyle_dark;
 
     return (
         <View style={listStyle.container}>
@@ -12,7 +14,8 @@ const List = () => {
     );
 };
 
-const listStyle = StyleSheet.create({
+
+const listStyle_light = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -20,5 +23,15 @@ const listStyle = StyleSheet.create({
         backgroundColor: "#f5f5f4"
     }
 })
+
+
+const listStyle_dark = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2B2B2B',
+    },
+});
 
 export default List;

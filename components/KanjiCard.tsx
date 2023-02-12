@@ -1,14 +1,16 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { StyleSheet, Text, View, Button, useColorScheme } from 'react-native';
+import { SvgUri, SvgXml } from 'react-native-svg';
 import KanjiAnswerField from './KanjiAnswerField';
-import { Kanji, KanjiMapper } from '../model/kanji';
 
 type KanjiProps = {
     kanji: string;
 }
 
 const KanjiCard = (props: KanjiProps) => {
+
+    const kanjiCardStyle = useColorScheme() == 'light' ? kanjiCardStyle_light : kanjiCardStyle_dark;
+
 
     const options = {
         method: 'GET',
@@ -20,11 +22,15 @@ const KanjiCard = (props: KanjiProps) => {
 
     const [loading, setLoading] = useState(true);
     const [res, setData] = useState(null);
+    const [imgXml, setImgXml] = useState('<svg></svg>');
 
     const fetchData = async () => {
         await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${props.kanji}`, options)
-            .then(async response => {
-                setData(await response.json());
+            .then(async response => { 
+                const data = await response.json()
+                setData(data);
+                const xml = await (await fetch(data.kanji.video.poster)).text();
+                setImgXml(xml);
             })
             .catch(err => console.log(err)); 
     }
@@ -36,28 +42,56 @@ const KanjiCard = (props: KanjiProps) => {
         });
     }, []);
 
+
+
     return (
             <View style={kanjiCardStyle.container}>
 
-                <Text> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
-                {!loading && (<SvgUri
+            <Text style={kanjiCardStyle.text}> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
+            {!loading && (
+                <SvgXml
+                    xml={imgXml
+                        .replace(/fill="#[0-9a-f]{6}"/g, `fill=${kanjiCardStyle.svg.color}`)}
                     width="200"
-                    uri={res.kanji.video.poster}
-                />)}
-                <Text> {loading ? <Text/> : <Text>{res.kanji.meaning.english}</Text>}</Text>
+                    height="200"
+                />
+                    )}
+            <Text style={kanjiCardStyle.text}> {loading ? <Text/> : <Text>{res.kanji.meaning.english}</Text>}</Text>
                 <KanjiAnswerField/>
                 <Button title="OK" color="#FF5C5C" />
             </View>
     );
 };
 
-const kanjiCardStyle = StyleSheet.create({
+const kanjiCardStyle_light = StyleSheet.create({
+    svg: {
+        color: "black",
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
         height: "100%"
+    },
+    text: {
+        color: "black"
+    }
+})
+
+const kanjiCardStyle_dark = StyleSheet.create({
+    svg: {
+        color: "white",
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: "100%",
+        height: "100%"
+    },
+    text: {
+        color: "white"
     }
 })
 

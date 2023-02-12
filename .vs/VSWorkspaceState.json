@@ -4,9 +4,11 @@
     "\\assets",
     "\\components",
     "\\model",
+    "\\pages",
     "\\redux",
+    "\\redux\\actions",
     "\\redux\\reducers"
   ],
-  "SelectedNode": "\\app.json",
+  "SelectedNode": "\\components\\DrawingCanva.tsx",
   "PreviewInSolutionExplorer": false
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Kanji } from '../model/kanji';
 import { setSelectedKanji } from '../redux/actions/setSelectedKanji';
@@ -11,6 +11,9 @@ interface kanjiPlaygroundListProps {
 }
 
 const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
+
+    const kanjiPlaygroundList = useColorScheme() == 'light' ? kanjiPlaygroundList_light : kanjiPlaygroundList_dark;
+
 
     const selectedKanji = useSelector(state => state.kanjiReducer.selectedKanji);
     const dispatch = useDispatch();
@@ -35,7 +38,7 @@ const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
     );
 };
 
-const kanjiPlaygroundList = StyleSheet.create({
+const kanjiPlaygroundList_light = StyleSheet.create({
     container: {
         width: '70%',
         height: '30%',
@@ -52,6 +55,37 @@ const kanjiPlaygroundList = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 30,
         textAlign: "center",
+    },
+    input: {
+        height: "20%",
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        width: "75%",
+        backgroundColor: "white",
+        borderRadius: 20,
+        alignSelf: "center"
+    },
+})
+
+const kanjiPlaygroundList_dark = StyleSheet.create({
+    container: {
+        width: '70%',
+        height: '30%',
+        margin: 5,
+    },
+    entry: {
+        padding: 5,
+        margin: 1,
+        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#1c1c1c',
+    },
+    entryText: {
+        fontWeight: "bold",
+        fontSize: 30,
+        textAlign: "center",
+        color: "white"
     },
     input: {
         height: "20%",
