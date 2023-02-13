@@ -9,10 +9,10 @@ export default function KanjiStackNavigator() {
     const Stack = createStackNavigator();
 
     return (
-        <Stack.Navigator initialRouteName="List"
+        <Stack.Navigator initialRouteName="KanjiList"
             screenOptions={stackOptions}
         >
-            <Stack.Screen name="List" component={List} />
+            <Stack.Screen name="KanjiList" component={List} />
             <Stack.Screen name="Detail" component={Detail}/>
         </Stack.Navigator>
     )
@@ -20,6 +20,6 @@ export default function KanjiStackNavigator() {
 
 
 const stackOptions: StackNavigationOptions = {
-    headerShown: false, 
+    headerShown: false,
     presentation: "modal"
 };

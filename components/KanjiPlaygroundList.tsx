@@ -32,7 +32,7 @@ const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
                         </TouchableOpacity>
                     )
                 }
-                keyExtractor={item => `basicListEntry-${item}`}>
+                keyExtractor={item => `basicListEntry-${item.character}`}>
             </FlatList>
         </View>
     );

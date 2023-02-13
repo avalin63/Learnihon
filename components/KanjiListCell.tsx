@@ -14,7 +14,7 @@ const KanjiListCell = (props: kanjiListCellProps) => {
     const navigator = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => navigator.push("Detail", {"kanji": props.kanji})} style={cellStyle.item}>
+        <TouchableOpacity onPress={() => navigator.navigate("Detail", {"kanji": props.kanji})} style={cellStyle.item}>
             <Text style={cellStyle.kanji}>{props.kanji.character}</Text>
             <Text style={cellStyle.text}>{props.kanji.meaning}</Text>
         </TouchableOpacity>

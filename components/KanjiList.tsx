@@ -34,7 +34,7 @@ const KanjiList = () => {
                 renderSectionHeader={({ section }) => (
                     <Text style={kanjiListStyle.sectionHeader}>{section.title}</Text>
                 )}
-                keyExtractor={item => `basicListEntry-${item}`}
+                keyExtractor={item => `basicListEntry-${item.character}`}
             >
             </SectionList>
         </View>

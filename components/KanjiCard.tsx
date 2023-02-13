@@ -26,13 +26,13 @@ const KanjiCard = (props: KanjiProps) => {
 
     const fetchData = async () => {
         await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${props.kanji}`, options)
-            .then(async response => { 
+            .then(async response => {
                 const data = await response.json()
                 setData(data);
                 const xml = await (await fetch(data.kanji.video.poster)).text();
                 setImgXml(xml);
             })
-            .catch(err => console.log(err)); 
+            .catch(err => console.log(err));
     }
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const KanjiCard = (props: KanjiProps) => {
 
 
     return (
-            <View style={kanjiCardStyle.container}>
+        <View style={kanjiCardStyle.container}>
 
             <Text style={kanjiCardStyle.text}> {loading ? <Text>Loading...</Text> : <Text>{res.kanji.onyomi.katakana}</Text>}</Text>
             {!loading && (
@@ -54,11 +54,11 @@ const KanjiCard = (props: KanjiProps) => {
                     width="200"
                     height="200"
                 />
-                    )}
-            <Text style={kanjiCardStyle.text}> {loading ? <Text/> : <Text>{res.kanji.meaning.english}</Text>}</Text>
-                <KanjiAnswerField/>
-                <Button title="OK" color="#FF5C5C" />
-            </View>
+            )}
+            <Text style={kanjiCardStyle.text}> {loading ? <Text /> : <Text>{res.kanji.meaning.english}</Text>}</Text>
+            <KanjiAnswerField />
+            <Button title="OK" color="#FF5C5C" />
+        </View>
     );
 };
 

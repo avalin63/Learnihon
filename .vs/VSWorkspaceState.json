@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\assets",
+    "\\components",
+    "\\model",
+    "\\navigation",
+    "\\pages",
+    "\\redux"
   ],
-  "SelectedNode": "\\C:\\Users\\Siph9\\Source\\Repos\\LEARNIHON",
+  "SelectedNode": "\\components\\KanjiListCell.tsx",
   "PreviewInSolutionExplorer": false
 }
