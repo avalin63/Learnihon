@@ -2,7 +2,6 @@ import { Dimensions, Animated } from 'react-native';
 
 export const animation = new Animated.Value(0);
 
-
 export const startAnimation = () => {
     Animated.timing(animation, {
         toValue: 1,

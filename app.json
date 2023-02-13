@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-init",
-    "slug": "expo-init",
+    "name": "Learnihon",
+    "slug": "Learnihon",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",

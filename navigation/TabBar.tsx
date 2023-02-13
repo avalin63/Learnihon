@@ -9,8 +9,8 @@ import { Edit2 as PlaygroundIcon } from "react-native-feather";
 import { BookOpen as LearnIcon } from "react-native-feather";
 
 import Learn from '../pages/Learn';
-import List from '../pages/List';
 import Playground from '../pages/Playground';
+import KanjiStackNavigator from './Stack';
 
 
 
@@ -81,6 +81,7 @@ const TabBar = () => {
                 <Tab.Navigator
                 screenOptions={tabOptions}
                 initialRouteName="Learn"
+                
                 >
                     <Tab.Screen
                         options={{
@@ -89,7 +90,7 @@ const TabBar = () => {
                             )
                         }}
                         name="List"
-                        component={List}
+                    component={KanjiStackNavigator}
                     />
                 <Tab.Screen
                     options={{

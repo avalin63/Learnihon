@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 import { Kanji } from '../model/kanji';
@@ -10,9 +11,10 @@ const KanjiListCell = (props: kanjiListCellProps) => {
 
     const cellStyle = useColorScheme() == 'light' ? cellStyle_light : cellStyle_dark;
 
+    const navigator = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => console.log(props.kanji)} style={cellStyle.item}>
+        <TouchableOpacity onPress={() => navigator.push("Detail", {"kanji": props.kanji})} style={cellStyle.item}>
             <Text style={cellStyle.kanji}>{props.kanji.character}</Text>
             <Text style={cellStyle.text}>{props.kanji.meaning}</Text>
         </TouchableOpacity>

@@ -1,6 +1,7 @@
-import React  from 'react';
+﻿import React  from 'react';
 import { View, StyleSheet, useColorScheme } from 'react-native';
 import KanjiList from '../components/KanjiList';
+import { Kanji } from '../model/kanji';
 
 
 const List = () => {
@@ -20,7 +21,7 @@ const listStyle_light = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#f5f5f5"
+        backgroundColor: "#f5f5f5",
     }
 })
 
