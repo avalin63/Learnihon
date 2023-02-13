@@ -21,7 +21,7 @@ const learnStyle_light = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#f5f5f4"
+        backgroundColor: "#f5f5f5"
     }
 })
 

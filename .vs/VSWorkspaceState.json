@@ -1,14 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
     "\\components",
     "\\model",
+    "\\navigation",
     "\\pages",
     "\\redux",
     "\\redux\\actions",
     "\\redux\\reducers"
   ],
-  "SelectedNode": "\\components\\DrawingCanva.tsx",
+  "SelectedNode": "\\navigation\\TabBar.tsx",
   "PreviewInSolutionExplorer": false
 }

@@ -13,6 +13,7 @@ export default function kanjiReducer(state = initialState, action) {
             return { ...state, kanjis: state.kanjis.push(action.payload) };
         case c.SET_SELECTED_KANJI:
             // @ts-ignore
+            console.log("select" + action.payload.meaning);
             return { ...state, selectedKanji: action.payload };
         default:
             return state;

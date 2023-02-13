@@ -26,17 +26,6 @@ export default function App() {
   );
 }
 
-const tabOptions = {
-    tabBarShowLabel: false,
-    tabBarStyle: {
-        backgroundColor: "#FF5C5C"
-    },
-    tabBarActiveTintColor: "white",
-    tabBarInactiveTintColor: "black"
-};
-
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

@@ -24,15 +24,17 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
 
 
     useEffect(() => {
+        fetchXml();
         if (canvasRef.current) {
-            fetchXml();
             setIsCanvasReady(true);
         }
-    }, [canvasRef.current]);
+    }, [canvasRef.current, selectedKanji]);
 
     const fetchXml = async () => {
-        const xml = await (await fetch(selectedKanji.image)).text();
-        setImgXml(xml);
+        if (selectedKanji instanceof Kanji) {
+            const xml = await (await fetch(selectedKanji.image)).text();
+            setImgXml(xml);
+        }
     }
 
 

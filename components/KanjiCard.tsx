@@ -43,7 +43,6 @@ const KanjiCard = (props: KanjiProps) => {
     }, []);
 
 
-
     return (
             <View style={kanjiCardStyle.container}>
 

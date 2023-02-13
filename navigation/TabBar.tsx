@@ -25,6 +25,11 @@ const LearnButton = (props: BottomTabBarButtonProps) => {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
+
+            <View
+                style={learnButtonStyle.button2}>
+            </View>
+
             <TouchableNativeFeedback onPress={props.onPress}>
                 <View
                     style={learnButtonStyle.button}>
@@ -42,9 +47,14 @@ const learnButtonStyle_light = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 40,
-        borderColor: "#f5f5f4",
-        borderWidth: 5
-    }
+    },
+    button2: {
+        backgroundColor: "#f5f5f4",
+        width: 90,
+        height: 90,
+        borderRadius: 45,
+        position: "absolute"
+    },
 });
 
 const learnButtonStyle_dark = StyleSheet.create({
@@ -53,9 +63,14 @@ const learnButtonStyle_dark = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 40,
-        borderColor: "#2b2b2b",
-        borderWidth: 5
-    }
+    },
+    button2: {
+        backgroundColor: "#2b2b2b",
+        width: 90,
+        height: 90,
+        borderRadius: 45,
+        position: "absolute"
+    },
 });
 
 const TabBar = () => {
@@ -104,7 +119,7 @@ const tabOptions: BottomTabNavigationOptions = {
     tabBarShowLabel: false,
     headerShown: false,
     tabBarStyle: {
-        backgroundColor: "#FF5C5C"
+        backgroundColor: "#FF5C5C",
     },
     tabBarActiveTintColor: "white",
     tabBarInactiveTintColor: "black",
