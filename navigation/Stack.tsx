@@ -18,7 +18,6 @@ export default function KanjiStackNavigator() {
     )
 }
 
-
 const stackOptions: StackNavigationOptions = {
     headerShown: false,
     presentation: "modal"

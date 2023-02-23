@@ -23,7 +23,7 @@ export const animatedStyles = {
         {
             translateY: animation.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, -Dimensions.get('window').height / 2]
+                outputRange: [0, -Dimensions.get('window').height/2]
             }),
         },
     ],

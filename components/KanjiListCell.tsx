@@ -33,12 +33,13 @@ const cellStyle_light = StyleSheet.create({
     },
     text: {
         color: "black",
+        width: "90%"
     },
     kanji: {
         fontWeight: "bold",
         color: "black",
         fontSize: "20em",
-        width: "50%"
+        width: "10%"
     }
 })
 
@@ -54,12 +55,13 @@ const cellStyle_dark = StyleSheet.create({
     },
     text: {
         color: "white",
+        width: "90%"
     },
     kanji: {
         fontWeight: "bold",
         color: "white",
         fontSize: "20em",
-        width: "50%"
+        width: "10%"
     },
 })
 

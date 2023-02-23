@@ -11,6 +11,7 @@ import { BookOpen as LearnIcon } from "react-native-feather";
 import Learn from '../pages/Learn';
 import Playground from '../pages/Playground';
 import KanjiStackNavigator from './Stack';
+import Header from '../components/Header';
 
 
 
@@ -77,42 +78,43 @@ const TabBar = () => {
 
     const Tab = createBottomTabNavigator();
     return (
-            <NavigationContainer>
-                <Tab.Navigator
-                screenOptions={tabOptions}
-                initialRouteName="Learn"
+        <>
+        <Header/>
+        <Tab.Navigator
+        screenOptions={tabOptions}
+        initialRouteName="Learn"
                 
-                >
-                    <Tab.Screen
-                        options={{
-                            tabBarIcon: ({ color }) => (
-                                <ListIcon color={color} />
-                            )
-                        }}
-                        name="List"
-                    component={KanjiStackNavigator}
-                    />
-                <Tab.Screen
-                    options={{
-                        tabBarIcon: ({ color }) => (
-                            <LearnIcon color={color} width={32} height={32} />
-                        ),
-                        tabBarButton: (props) => (
-                            <LearnButton { ... props}/>
-                        )
-                        }}
-                        name="Learn"
-                        component={Learn} />
-                    <Tab.Screen
-                        options={{
-                            tabBarIcon: ({ color }) => (
-                                <PlaygroundIcon color={color} />
-                            )
-                        }}
-                        name="Playground"
-                        component={Playground} />
-                </Tab.Navigator>
-            </NavigationContainer>
+        >
+            <Tab.Screen
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <ListIcon color={color} />
+                    )
+                }}
+                name="List"
+            component={KanjiStackNavigator}
+            />
+        <Tab.Screen
+            options={{
+                tabBarIcon: ({ color }) => (
+                    <LearnIcon color={color} width={32} height={32} />
+                ),
+                tabBarButton: (props) => (
+                    <LearnButton { ... props}/>
+                )
+                }}
+                name="Learn"
+                component={Learn} />
+            <Tab.Screen
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <PlaygroundIcon color={color} />
+                    )
+                }}
+                name="Playground"
+                component={Playground} />
+            </Tab.Navigator>
+        </>
     );
 }
 

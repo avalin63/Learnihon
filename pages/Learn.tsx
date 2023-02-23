@@ -1,12 +1,14 @@
 ﻿import React from 'react';
 import { View, StyleSheet, useColorScheme } from 'react-native';
+import { useSelector } from 'react-redux';
 import KanjiCard from '../components/KanjiCard';
+import { Kanji } from '../model/kanji';
+import { KanjiListByGrade } from '../model/kanjiListByGrades';
 
 
 const Learn = () => {
 
     const learnStyle = useColorScheme() == 'light' ? learnStyle_light : learnStyle_dark;
-
 
     return (
         <View style={learnStyle.container}>

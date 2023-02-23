@@ -1,2 +1,2 @@
-export const FETCH_KANJIS = 'FETCH_KANJIS';
 export const SET_SELECTED_KANJI = 'SET_SELECTED_KANJI';
+export const SET_KANJIS = 'SET_KANJIS';

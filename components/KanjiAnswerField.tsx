@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated, StyleSheet, TextInput } from 'react-native';
-import { startAnimation, stopAnimation, animatedStyles } from '../assets/answerAnimation'
+import { startAnimation, stopAnimation, animatedStyles } from '../assets/animations/answerAnimation'
 
 const KanjiAnswerField = () => {
 

@@ -13,9 +13,9 @@ const Playground = () => {
     return (
         <View style={playgroundStyle.container}>
             <KanjiPlaygroundList data={[
-                new Kanji("親", "parent", "https://media.kanjialive.com/kanji_strokes/shita(shii)_16.svg"),
-                new Kanji("雨", "rain", "https://media.kanjialive.com/kanji_strokes/u-ame_8.svg"),
-                new Kanji("貴", "noble", "https://media.kanjialive.com/kanji_strokes/ki-touto(i)_12.svg")
+                new Kanji("親", "parent", "https://media.kanjialive.com/kanji_strokes/shita(shii)_16.svg", "aaa", 16),
+                new Kanji("雨", "rain", "https://media.kanjialive.com/kanji_strokes/u-ame_8.svg", "aaa", 8),
+                new Kanji("貴", "noble", "https://media.kanjialive.com/kanji_strokes/ki-touto(i)_12.svg", "aaa", 12)
             ]} />
             <DrawingCanva backgroundImage="https://media.kanjialive.com/kanji_strokes/otozu(reru)_11.svg"/>
         </View>

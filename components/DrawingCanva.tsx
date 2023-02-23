@@ -1,11 +1,13 @@
 import React, {useEffect, useRef, useState }  from 'react';
 import { SketchCanvas, SketchCanvasRef } from 'rn-perfect-sketch-canvas';
-import { StyleSheet, Button, View, Text, useColorScheme } from 'react-native';
+import { StyleSheet, Button, View, Text, useColorScheme, Touchable } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import Slider  from '@react-native-community/slider'
 
 import { useSelector } from 'react-redux';
-import { Kanji, KanjiMapper } from '../model/kanji';
+import { Kanji } from '../model/kanji';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { KanjiMapper } from '../model/kanjiMapper';
 
 type DrawingCanvaProps = {
     backgroundImage: string;
@@ -13,15 +15,14 @@ type DrawingCanvaProps = {
 
 const DrawingCanva = (props: DrawingCanvaProps) => {
 
-    const style = useColorScheme() == 'light' ? style_light : style_dark;
+    const style = useColorScheme()  == 'light' ? style_light : style_dark;
 
     const canvasRef = useRef<SketchCanvasRef>(null);
     const [strokeWidth, setStroke] = useState(5);
     const [isCanvasReady, setIsCanvasReady] = useState(false);
     const [imgXml, setImgXml] = useState('<svg></svg>');
-
+    const [drawnStrokes, setDrawnStrokes] = useState(0);
     const selectedKanji = KanjiMapper.SerializedObjectToKanji(useSelector(state => state.kanjiReducer.selectedKanji));
-
 
     useEffect(() => {
         fetchXml();
@@ -30,13 +31,16 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
         }
     }, [canvasRef.current, selectedKanji]);
 
+    const getCanvasStrokeCount = () => {
+        return canvasRef.current?.toPoints().length;
+    }
+
     const fetchXml = async () => {
         if (selectedKanji instanceof Kanji) {
             const xml = await (await fetch(selectedKanji.image)).text();
             setImgXml(xml);
         }
     }
-
 
     return (
         <View style={style.container}>
@@ -49,17 +53,18 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
                     opacity={0.1}
                     style={style.back}
                 />)}
-            <SketchCanvas
-                ref={canvasRef}
-                strokeColor={style.canvas.strokeColor}
-                strokeWidth={strokeWidth}
-                containerStyle={style.canvas}
-            />
+
+                <SketchCanvas
+                    ref={canvasRef}
+                    strokeColor={style.canvas.strokeColor}
+                    strokeWidth={strokeWidth}
+                    containerStyle={style.canvas}
+                    />
             <Slider
                 style={style.slider}
                 onValueChange={(val) => setStroke(val)}
                 minimumValue={5}
-                maximumValue={10}
+                maximumValue={15}
                 minimumTrackTintColor={"#FF5C5C"}
             />
             {isCanvasReady && (<View style={style.menu}>

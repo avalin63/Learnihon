@@ -27,7 +27,7 @@ const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
                 data={props.data}
                 renderItem={
                     ({ item }) => (
-                        <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item)); console.log(item) }} style={kanjiPlaygroundList.entry}>
+                        <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item))}} style={kanjiPlaygroundList.entry}>
                             <Text style={kanjiPlaygroundList.entryText}>{item.character}</Text>
                         </TouchableOpacity>
                     )

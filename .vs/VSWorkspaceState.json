@@ -1,13 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
     "\\components",
     "\\model",
     "\\navigation",
     "\\pages",
-    "\\redux"
+    "\\redux",
+    "\\redux\\actions",
+    "\\redux\\reducers",
+    "\\redux\\thunks"
   ],
-  "SelectedNode": "\\components\\KanjiListCell.tsx",
+  "SelectedNode": "\\components\\KanjiListSearchPanel.tsx",
   "PreviewInSolutionExplorer": false
 }

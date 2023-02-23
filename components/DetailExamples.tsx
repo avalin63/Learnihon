@@ -29,7 +29,8 @@ const DetailExamples = (props: detailExamplesProps) => {
 const detailExamplesStyle_light = StyleSheet.create({
     container: {
         width: '100%',
-        paddingBottom: 50,
+        paddingRight: 20,
+        paddingLeft: 20,
     },
     cellContainer: {
         flex: 1,
@@ -47,7 +48,8 @@ const detailExamplesStyle_light = StyleSheet.create({
 const detailExamplesStyle_dark = StyleSheet.create({
     container: {
         width: '100%',
-        paddingBottom: 50,
+        paddingRight: 20,
+        paddingLeft: 20,
     },
     cellContainer: {
         flex: 1,
