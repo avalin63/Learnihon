@@ -10,6 +10,10 @@ const reducer = {
 const store = configureStore(
 	{
 		reducer,
+		middleware: [createSerializableStateInvariantMiddleware({
+			ignoredActions: ["SET_KANJIS", "SET_SELECTED_KANJI"],
+			ignoreActions: true
+		})]
 	},);
 
 export default store;

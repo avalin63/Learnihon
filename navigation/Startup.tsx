@@ -40,7 +40,7 @@ export default function Startup() {
 
     const init = async () => {
         
-        await dispatch(await fetchKanjis());
+        await (await fetchKanjis())(dispatch);
         //await new Promise(resolve => setTimeout(resolve, 5000));
         navigator.navigate("Main");
     }

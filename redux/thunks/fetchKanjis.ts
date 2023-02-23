@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { initKanjiListByGrade, KanjiListByGrade } from '../../model/kanjiListByGrades';
 import { KanjiMapper } from '../../model/kanjiMapper';
 import { setKanjis } from '../actions/setKanjis';
@@ -18,7 +19,7 @@ export const fetchKanjis = async () => {
     const fetchData = async (grade: string) => {
         return fetch(`https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/?grade=${grade}`, options)
     }
-    return async dispatch => {
+    return async (dispatch) => {
         const fetchAll = async () => {
             for (let i = 1; i <= 6; i++) {
                 await fetchData(i.toString()).then(async (response) => {
