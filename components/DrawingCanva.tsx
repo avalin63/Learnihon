@@ -1,13 +1,14 @@
 import React, {useEffect, useRef, useState }  from 'react';
 import { SketchCanvas, SketchCanvasRef } from 'rn-perfect-sketch-canvas';
-import { StyleSheet, Button, View, Text, useColorScheme, Touchable } from 'react-native';
+import { StyleSheet, Button, View, Text, useColorScheme, Touchable, TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import Slider  from '@react-native-community/slider'
 
 import { useSelector } from 'react-redux';
 import { Kanji } from '../model/kanji';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { KanjiMapper } from '../model/kanjiMapper';
+
+import { Eye, EyeOff } from "react-native-feather";
 
 type DrawingCanvaProps = {
     backgroundImage: string;
@@ -23,6 +24,8 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
     const [imgXml, setImgXml] = useState('<svg></svg>');
     const [drawnStrokes, setDrawnStrokes] = useState(0);
     const selectedKanji = KanjiMapper.SerializedObjectToKanji(useSelector(state => state.kanjiReducer.selectedKanji));
+
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         fetchXml();
@@ -44,7 +47,13 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
 
     return (
         <View style={style.container}>
-            {selectedKanji && (
+
+            <TouchableOpacity style={style.visibility} onPress={() => setIsVisible(!isVisible)}>
+                {isVisible ? (<Eye stroke={style.svg.color} opacity={0.5} />) :
+                    (<EyeOff stroke={style.svg.color} opacity={0.5} />)}
+            </TouchableOpacity>
+
+            {selectedKanji && isVisible && (
                  <SvgXml
                     xml={imgXml
                         .replace(/fill="#[0-9a-f]{6}"/g, `fill=${style.svg.color}`)}
@@ -68,8 +77,15 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
                 minimumTrackTintColor={"#FF5C5C"}
             />
             {isCanvasReady && (<View style={style.menu}>
-                <Button color="#FF5C5C" onPress={canvasRef.current?.reset} title="Reset" />
-                <Button color="#FF5C5C" onPress={canvasRef.current?.undo} title="Undo" />
+                <Button color="#FF5C5C" onPress={() => {
+                    canvasRef.current?.reset();
+                    setStroke(strokeWidth);
+                }} title="Reset" />
+                <Button color="#FF5C5C"
+                    onPress={() => {
+                    canvasRef.current?.undo();
+                    setStroke(strokeWidth);
+                }} title="Undo" />
             </View>)}
         </View>
     );
@@ -137,6 +153,11 @@ const style_dark = StyleSheet.create({
     slider: {
         width: "75%",
         alignSelf: "center",
+    },
+    visibility: {
+        position: "absolute",
+        right: 50,
+        top: -25
     }
 });
 

@@ -23,7 +23,6 @@ const KanjiCard = (props: KanjiProps) => {
         }
     })
 
-
     const nextKanji = () => allKanjis[Math.floor(Math.random() * allKanjis.length)];
 
     const [kanji, setKanji] = useState((): Kanji | null => { return null });
