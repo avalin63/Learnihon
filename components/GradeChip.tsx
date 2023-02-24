@@ -19,8 +19,9 @@ const GradeChip = (props: gradeChipProps) => {
     }, [isSelected]);
 
     const select = () => {
-        props.onSelect("Grade "+props.grade, isSelected);
         setIsSelected(!isSelected);
+        props.onSelect("Grade " + props.grade, isSelected);
+
     }
 
     return (

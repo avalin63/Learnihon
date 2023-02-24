@@ -13,27 +13,27 @@ type KanjiProps = {
 
 const KanjiCard = (props: KanjiProps) => {
 
-    const kanjiCardStyle = useColorScheme() == 'light' ? kanjiCardStyle_light : kanjiCardStyle_dark;
-
-
-
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '19516a9900mshce10de76f99976bp10f192jsn8c8d82222baa',
-            'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
+    var kanjiCardStyle = useColorScheme() == 'light' ? kanjiCardStyle_light : kanjiCardStyle_dark;
+    const [answerTextColor, setAnswerTextColor] = useState(kanjiCardStyle.text.color); 
+    var textAnswerStyle = StyleSheet.create({
+        text: {
+            color: answerTextColor,
+            fontWeight: "bold",
+            fontSize: "20em"
         }
-    }
+    })
+
+
+    const nextKanji = () => allKanjis[Math.floor(Math.random() * allKanjis.length)];
 
     const [kanji, setKanji] = useState((): Kanji | null => { return null });
     const [imgXml, setImgXml] = useState('<svg></svg>');
-
+    const [hasAnswered, setHasAnswered] = useState(false);
+    const [answer, setAnswer] = React.useState("");
 
     var kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
 
     const allKanjis: Kanji[] = [].concat(...Object.values(kanjis))
-    const selectedKanji = allKanjis[Math.floor(Math.random() * allKanjis.length)]
-
 
 
     const fetchXml = async () => {
@@ -44,13 +44,29 @@ const KanjiCard = (props: KanjiProps) => {
     }
 
     useEffect(() => {
-        setKanji(selectedKanji);
+        setKanji(nextKanji());
     }, []);
 
     useEffect(() => {
         fetchXml().then(_ => {
         });
     }, [kanji]);
+
+    const computeAnswer = () => {
+        setAnswerTextColor(isAnswerRight() ? "green" : "red");
+        setHasAnswered(true);
+    }
+    const computeNext = () => {
+        setKanji(nextKanji());
+        setAnswer("");
+        setHasAnswered(false);
+    }
+
+    const isAnswerRight = () => {
+        const arr1 = answer.toLowerCase().split(',').map(word => word.trim()).sort();
+        const arr2 = kanji?.meaning.toLowerCase().split(',').map(word => word.trim()).sort();
+        return JSON.stringify(arr1) === JSON.stringify(arr2);
+    }
 
     return (
         <View style={kanjiCardStyle.container}>
@@ -62,9 +78,19 @@ const KanjiCard = (props: KanjiProps) => {
                     width="200"
                     height="200"
                 />
-            <Text style={kanjiCardStyle.text}>{kanji?.meaning}</Text>
-            <KanjiAnswerField />
-            <Button title="OK" color="#FF5C5C" />
+            {!hasAnswered && (
+                <>
+                    <Text style={kanjiCardStyle.text}>{kanji?.meaning}</Text>
+                    <KanjiAnswerField answer={answer} setAnswer={setAnswer} />
+                    <Button title="OK" color="#FF5C5C" onPress={computeAnswer} />
+                </>
+            ) || (
+                <>
+                    <Text style={textAnswerStyle.text}>{kanji?.meaning}</Text>
+                    <Text style={kanjiCardStyle.text}>{answer}</Text>
+                    <Button title="NEXT" color="#FF5C5C" onPress={computeNext}/>
+                </>
+                )}
         </View>
     );
 }; 

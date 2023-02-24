@@ -42,7 +42,7 @@ export default function Startup() {
         
         await (await fetchKanjis())(dispatch);
         //await new Promise(resolve => setTimeout(resolve, 5000));
-        navigator.navigate("Main");
+        navigator.replace("Main");
     }
 
     useEffect(() => {

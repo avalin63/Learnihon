@@ -6,8 +6,6 @@ import { Provider, useDispatch } from 'react-redux';
 import { StatusBar } from 'expo-status-bar';
 import { Keyboard, SafeAreaView, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 
-import Header from './components/Header';
-import TabBar from './navigation/TabBar';
 import { InitStack } from './navigation/Startup';
 
 export default function App() {

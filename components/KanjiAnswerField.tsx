@@ -2,24 +2,20 @@ import React from 'react';
 import { Animated, StyleSheet, TextInput } from 'react-native';
 import { startAnimation, stopAnimation, animatedStyles } from '../assets/animations/answerAnimation'
 
-const KanjiAnswerField = () => {
+interface kanjiAnswerFieldProps { 
+    answer: string,
+    setAnswer: React.Dispatch<React.SetStateAction<string>>
+}
 
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '19516a9900mshce10de76f99976bp10f192jsn8c8d82222baa',
-            'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
-        }
-    }
+const KanjiAnswerField = (props: kanjiAnswerFieldProps) => {
 
-    const [answer, onChangeText] = React.useState("");
 
     return (
         <Animated.View style={[animatedStyles]}>
             <TextInput
                 style={answerFieldStyle.input}
-                onChangeText={onChangeText}
-                value={answer}
+                onChangeText={props.setAnswer}
+                value={props.answer}
                 onFocus={startAnimation}
                 onBlur={stopAnimation}
                 placeholder="Answer here"

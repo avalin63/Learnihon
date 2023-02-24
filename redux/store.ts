@@ -1,4 +1,4 @@
-import { configureStore, createSerializableStateInvariantMiddleware } from '@reduxjs/toolkit'
+import { configureStore, createSerializableStateInvariantMiddleware, getDefaultMiddleware } from '@reduxjs/toolkit'
 import kanjiReducer  from './reducers/kanjiReducer';
 
 // Reference here all your application reducers
@@ -10,10 +10,10 @@ const reducer = {
 const store = configureStore(
 	{
 		reducer,
-		middleware: [createSerializableStateInvariantMiddleware({
-			ignoredActions: ["SET_KANJIS", "SET_SELECTED_KANJI"],
-			ignoreActions: true
-		})]
+		middleware: getDefaultMiddleware({
+			serializableCheck: false
+			})
+		
 	},);
 
 export default store;

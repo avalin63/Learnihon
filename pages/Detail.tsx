@@ -15,18 +15,22 @@ const Detail = ({route}) => {
     const fetchXml = async () => {
         const imgxml = await (await fetch(kanji.image)).text();
         setImgXml(imgxml);
-        const iconxml = await (await fetch(kanji.radical.position)).text();
-        setIconXml(iconxml);
+        if (kanji.radical.position) {
+            const iconxml = await (await fetch(kanji.radical.position))?.text();
+            setIconXml(iconxml);
+        }
     }
 
     useEffect(() => {
+        console.log(kanji)
+
         fetchXml();
     }, []);
 
 
     return (
         <View style={detailStyle.container}>
-            <View>
+            <View style={detailStyle.pronounciation}>
                 <Text style={detailStyle.text}>{kanji.onyomi}</Text>
                 <Text style={detailStyle.text}>{kanji.kunyomi}</Text>
             </View>
@@ -39,11 +43,16 @@ const Detail = ({route}) => {
             <Text style={detailStyle.tinyText}>{kanji.strokes + " strokes"}</Text>
             <Text style={detailStyle.meaningText}>{kanji.meaning}</Text>
 
-            <Text style={detailStyle.title}>Radical</Text>
-            <DetailRadical character={kanji.radical.character} icon={iconXml}/>
-
-            <Text style={detailStyle.title}>Examples</Text>
-            <DetailExamples data={kanji.examples} />
+            {kanji.radical.position && kanji.radical.character &&
+                (<>
+                    <Text style={detailStyle.title}>Radical</Text>
+                    <DetailRadical character={kanji.radical.character} icon={iconXml}/>
+                </>)}
+            {kanji.examples &&
+                (<>
+                    <Text style={detailStyle.title}>Examples</Text>
+                    <DetailExamples data={kanji.examples} />
+                </>)}
         </View>
     );
 };
@@ -59,6 +68,9 @@ const detailStyle_light = StyleSheet.create({
         height: "100%",
         width: "100%"
     },
+    pronounciation: {
+        alignItems: "center"
+    },
     svg: {
         color: "black"
     },
@@ -77,7 +89,7 @@ const detailStyle_light = StyleSheet.create({
         fontSize: 20,
         color: "#FF5C5C",
         fontWeight: "900",
-
+        textAlign: "center"
     }
 })
 
@@ -89,6 +101,9 @@ const detailStyle_dark = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: "#1c1c1c",
     },
+    pronounciation: {
+        alignItems: "center"
+    },
     svg: {
         color: "white"
     },
@@ -108,6 +123,7 @@ const detailStyle_dark = StyleSheet.create({
         fontSize: 20,
         color: "#FF5C5C",
         fontWeight: "900",
+        textAlign: "center"
 
     }
 });

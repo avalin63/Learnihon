@@ -10,6 +10,6 @@
     "\\redux\\reducers",
     "\\redux\\thunks"
   ],
-  "SelectedNode": "\\components\\KanjiListSearchPanel.tsx",
+  "SelectedNode": "\\redux\\store.ts",
   "PreviewInSolutionExplorer": false
 }
