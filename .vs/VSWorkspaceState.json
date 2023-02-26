@@ -10,6 +10,6 @@
     "\\redux\\reducers",
     "\\redux\\thunks"
   ],
-  "SelectedNode": "\\redux\\store.ts",
+  "SelectedNode": "\\components\\KanjiCard.tsx",
   "PreviewInSolutionExplorer": false
 }

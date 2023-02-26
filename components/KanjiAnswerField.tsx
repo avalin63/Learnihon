@@ -16,8 +16,6 @@ const KanjiAnswerField = (props: kanjiAnswerFieldProps) => {
                 style={answerFieldStyle.input}
                 onChangeText={props.setAnswer}
                 value={props.answer}
-                onFocus={startAnimation}
-                onBlur={stopAnimation}
                 placeholder="Answer here"
             />
         </Animated.View>

@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, useColorScheme } from 'react-native';
+import { StyleSheet, Text, View, Button, useColorScheme, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { SvgUri, SvgXml } from 'react-native-svg';
 import { useSelector } from 'react-redux';
 import { Kanji } from '../model/kanji';
@@ -68,7 +68,11 @@ const KanjiCard = (props: KanjiProps) => {
     }
 
     return (
-        <View style={kanjiCardStyle.container}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={kanjiCardStyle.container}>
+            <ScrollView contentContainerStyle={kanjiCardStyle.container}
+                showsVerticalScrollIndicator={false}>
 
             <Text style={kanjiCardStyle.text}>{kanji?.onyomi}</Text>
                 <SvgXml
@@ -76,10 +80,10 @@ const KanjiCard = (props: KanjiProps) => {
                         .replace(/fill="#[0-9a-f]{6}"/g, `fill=${kanjiCardStyle.svg.color}`)}
                     width="200"
                     height="200"
-                />
+            />
+
             {!hasAnswered && (
                 <>
-                    <Text style={kanjiCardStyle.text}>{kanji?.meaning}</Text>
                     <KanjiAnswerField answer={answer} setAnswer={setAnswer} />
                     <Button title="OK" color="#FF5C5C" onPress={computeAnswer} />
                 </>
@@ -89,8 +93,10 @@ const KanjiCard = (props: KanjiProps) => {
                     <Text style={kanjiCardStyle.text}>{answer}</Text>
                     <Button title="NEXT" color="#FF5C5C" onPress={computeNext}/>
                 </>
-                )}
-        </View>
+                    )}
+            </ScrollView>
+        </KeyboardAvoidingView>
+
     );
 }; 
 
