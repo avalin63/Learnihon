@@ -1,23 +1,26 @@
-﻿import React, { useEffect } from 'react';
+﻿import React from 'react';
 
 import store from "./redux/store";
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import { StatusBar } from 'expo-status-bar';
-import { Keyboard, SafeAreaView, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import { Keyboard, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 
 import { InitStack } from './navigation/Startup';
+
+import {SafeAreaView} from 'react-native-safe-area-context';
+
 
 export default function App() {
 
     return (
     <Provider store={store}>
-            <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }}>
-                <SafeAreaView style={styles.container}>
-                    <InitStack/>
-                    <StatusBar style="auto" />
-                </SafeAreaView>
-            </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }}>
+            <SafeAreaView style={styles.container}>
+                <InitStack/>
+                <StatusBar style="auto" />
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
     </Provider>
 
   );
@@ -27,9 +30,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FF5C5C',
-  },
+    },
 });
-
-
-
-

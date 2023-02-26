@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Kanji } from '../model/kanji';
 import { setSelectedKanji } from '../redux/actions/setSelectedKanji';
+import { searchKanjis } from '../redux/thunks/searchKanjis';
 
 
 
@@ -12,23 +13,32 @@ interface kanjiPlaygroundListProps {
 
 const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
 
-    const kanjiPlaygroundList = useColorScheme() == 'light' ? kanjiPlaygroundList_light : kanjiPlaygroundList_dark;
+    const kanjiPlaygroundListStyle = useColorScheme() == 'light' ? kanjiPlaygroundListStyle_light : kanjiPlaygroundListStyle_dark;
+    const [search, setSearch] = React.useState("");
 
 
-    const selectedKanji = useSelector(state => state.kanjiReducer.selectedKanji);
+    const searchResult: Kanji[] = useSelector(state => state.kanjiReducer.playgroundList);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        console.log(searchResult);
+    }, [searchResult])
+
     return (
-        <View style={kanjiPlaygroundList.container}>
-            <TextInput style={kanjiPlaygroundList.input}
-                placeholder="Search kanji here"></TextInput>
+        <View style={kanjiPlaygroundListStyle.container}>
+            <TextInput style={kanjiPlaygroundListStyle.input}
+                placeholder="Search kanji here"
+                value={search}
+                onChangeText={setSearch}
+                onBlur={async () => await (await searchKanjis(search))(dispatch)}
+            ></TextInput>
             <FlatList 
                 numColumns={4}
-                data={props.data}
+                data={searchResult}
                 renderItem={
                     ({ item }) => (
-                        <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item))}} style={kanjiPlaygroundList.entry}>
-                            <Text style={kanjiPlaygroundList.entryText}>{item.character}</Text>
+                        <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item))}} style={kanjiPlaygroundListStyle.entry}>
+                            <Text style={kanjiPlaygroundListStyle.entryText}>{item.character}</Text>
                         </TouchableOpacity>
                     )
                 }
@@ -38,7 +48,7 @@ const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
     );
 };
 
-const kanjiPlaygroundList_light = StyleSheet.create({
+const kanjiPlaygroundListStyle_light = StyleSheet.create({
     container: {
         width: '70%',
         height: '30%',
@@ -68,7 +78,7 @@ const kanjiPlaygroundList_light = StyleSheet.create({
     },
 })
 
-const kanjiPlaygroundList_dark = StyleSheet.create({
+const kanjiPlaygroundListStyle_dark = StyleSheet.create({
     container: {
         width: '70%',
         height: '30%',

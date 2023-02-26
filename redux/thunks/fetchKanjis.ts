@@ -22,16 +22,16 @@ export const fetchKanjis = async () => {
     return async (dispatch) => {
         const fetchAll = async () => {
             for (let i = 1; i <= 6; i++) {
-                await fetchData(i.toString()).then(async (response) => {
-                    const data = await response.json();
-                    data.forEach(async (it: object) => {
-                        await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${it.kanji.character}`, options)
-                            .then(async detail => {
-                                const detail_data = await detail.json();
-                                kanjis['Grade ' + i].push(KanjiMapper.ApiJsonToKanji(detail_data));
-                            })
-                    })
-                })
+
+                const data = await fetchData(i.toString()).then(response => response.json());
+
+                const fetchPromises = data.map(it =>
+                    fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${it.kanji.character}`, options)
+                        .then(detail => detail.json())
+                );
+
+                kanjis['Grade ' + i] = await Promise.all(fetchPromises)
+                    .then(details => details.map(detail_data => KanjiMapper.ApiJsonToKanji(detail_data)));
             }
         }
         return fetchAll().then(_ => dispatch(setKanjis(kanjis)))
