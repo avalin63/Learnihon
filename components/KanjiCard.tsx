@@ -74,7 +74,9 @@ const KanjiCard = (props: KanjiProps) => {
             <ScrollView contentContainerStyle={kanjiCardStyle.container}
                 showsVerticalScrollIndicator={false}>
 
-            <Text style={kanjiCardStyle.text}>{kanji?.onyomi}</Text>
+                <Text style={kanjiCardStyle.text}>{kanji?.onyomi}</Text>
+                <Text style={kanjiCardStyle.text}>{kanji?.kunyomi}</Text>
+
                 <SvgXml
                     xml={imgXml
                         .replace(/fill="#[0-9a-f]{6}"/g, `fill=${kanjiCardStyle.svg.color}`)}

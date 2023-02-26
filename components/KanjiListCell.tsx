@@ -7,7 +7,7 @@ interface kanjiListCellProps {
     kanji: Kanji;
 }
 
-const KanjiListCell = (props: kanjiListCellProps) => {
+const KanjiListCell = React.memo((props: kanjiListCellProps) => {
 
     const cellStyle = useColorScheme() == 'light' ? cellStyle_light : cellStyle_dark;
 
@@ -19,7 +19,7 @@ const KanjiListCell = (props: kanjiListCellProps) => {
             <Text style={cellStyle.text}>{props.kanji.meaning}</Text>
         </TouchableOpacity>
     );
-};
+});
 
 const cellStyle_light = StyleSheet.create({
     item: {

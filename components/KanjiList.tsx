@@ -43,6 +43,7 @@ const KanjiList = () => {
             {selectedItems.length ?
             (<SectionList
                 sections={selectedItems}
+                windowSize={100}
                 renderItem={
                     ({ item }) => <KanjiListCell kanji={item} />
                 }

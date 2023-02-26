@@ -120,7 +120,12 @@ const style_light = StyleSheet.create({
     slider: {
         width: "75%",
         alignSelf: "center",
-    }
+    },
+    visibility: {
+    position: "absolute",
+    right: 50,
+    top: -25
+}
 });
 
 const style_dark = StyleSheet.create({

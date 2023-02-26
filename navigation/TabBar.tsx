@@ -118,6 +118,10 @@ const TabBar = () => {
     );
 }
 
+
+
+
+
 const tabOptions: BottomTabNavigationOptions = {
     tabBarShowLabel: false,
     headerShown: false,

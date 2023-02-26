@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
     "\\components",
     "\\model",
     "\\navigation",
@@ -10,6 +11,6 @@
     "\\redux\\reducers",
     "\\redux\\thunks"
   ],
-  "SelectedNode": "\\components\\KanjiCard.tsx",
+  "SelectedNode": "\\components\\DrawingCanva.tsx",
   "PreviewInSolutionExplorer": false
 }
