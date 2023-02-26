@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Kanji } from '../model/kanji';
 import { KanjiListByGrade } from '../model/kanjiListByGrades';
 import KanjiListCell from './KanjiListCell';
-import KanjiListSearchPanel from './KanjiListSearchPanel';
+import GradeChipList from './GradeChipList';
 
 
 const KanjiList = () => {
@@ -37,12 +37,11 @@ const KanjiList = () => {
     }, [dispatch]);
 
     return (
-
-
-
         <View>
-            <KanjiListSearchPanel onSelect={updateSelectedItems} />
-            <SectionList 
+            <GradeChipList onSelect={updateSelectedItems} />
+
+            {selectedItems.length ?
+            (<SectionList
                 sections={selectedItems}
                 renderItem={
                     ({ item }) => <KanjiListCell kanji={item} />
@@ -50,13 +49,12 @@ const KanjiList = () => {
                 renderSectionHeader={({ section }) => (
                     <Text style={kanjiListStyle.sectionHeader}>{section.title}</Text>
                 )}
-                keyExtractor={item => `basicListEntry-${item.character}`
-                }
-                style={kanjiListStyle.list}
-            >
-            </SectionList>
-            
-
+                keyExtractor={item => `basicListEntry-${item.character}`}/>) 
+                : (
+                    <View style={kanjiListStyle.container}>
+                        <Text style={kanjiListStyle.text}>Select a grade</Text>
+                    </View>
+                )}
         </View>
     );
 }; 
@@ -72,34 +70,20 @@ const kanjiListStyle_light = StyleSheet.create({
         color: "black",
         backgroundColor: '#d5d5d5',
     },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
+    text: {
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "black",
+        opacity: 0.5
     },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        width: 200,
-        backgroundColor: "white",
-        borderRadius: 20,
-        borderColor: "black"
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 })
 
 const kanjiListStyle_dark = StyleSheet.create({
-    list: {
-    },
-    chipList: {
-        height: 10
-    },
-    container: {
-        width: '100%',
-        height: '100%',
-        padding: 10
-    },
     sectionHeader: {
         paddingTop: 2,
         paddingLeft: 10,
@@ -110,19 +94,16 @@ const kanjiListStyle_dark = StyleSheet.create({
         color: "white",
         backgroundColor: '#0d0d0d',
     },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
+    text: {
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "white",
+        opacity: 0.5
     },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        backgroundColor: "white",
-        borderRadius: 20,
-        borderColor: "black"
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 })
 

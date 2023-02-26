@@ -1,6 +1,5 @@
 import React from 'react';
-import { Animated, StyleSheet, TextInput } from 'react-native';
-import { startAnimation, stopAnimation, animatedStyles } from '../assets/animations/answerAnimation'
+import { StyleSheet, TextInput, View } from 'react-native';
 
 interface kanjiAnswerFieldProps { 
     answer: string,
@@ -11,14 +10,14 @@ const KanjiAnswerField = (props: kanjiAnswerFieldProps) => {
 
 
     return (
-        <Animated.View style={[animatedStyles]}>
+        <View>
             <TextInput
                 style={answerFieldStyle.input}
                 onChangeText={props.setAnswer}
                 value={props.answer}
                 placeholder="Answer here"
             />
-        </Animated.View>
+        </View>
     );
 };
 

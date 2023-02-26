@@ -21,7 +21,7 @@ const headerStyle = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 30,
+        fontSize: 40,
     }
 })
 

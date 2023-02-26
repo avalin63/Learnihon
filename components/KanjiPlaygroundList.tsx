@@ -28,9 +28,10 @@ const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
         <View style={kanjiPlaygroundListStyle.container}>
             <TextInput style={kanjiPlaygroundListStyle.input}
                 placeholder="Search kanji here"
+                placeholderTextColor="gray"
                 value={search}
                 onChangeText={setSearch}
-                onBlur={async () => await (await searchKanjis(search))(dispatch)}
+                onBlur={async () => await (await searchKanjis(search.toLowerCase()))(dispatch)}
             ></TextInput>
             <FlatList 
                 numColumns={4}
@@ -74,7 +75,7 @@ const kanjiPlaygroundListStyle_light = StyleSheet.create({
         width: "75%",
         backgroundColor: "white",
         borderRadius: 20,
-        alignSelf: "center"
+        alignSelf: "center",
     },
 })
 
@@ -105,7 +106,8 @@ const kanjiPlaygroundListStyle_dark = StyleSheet.create({
         width: "75%",
         backgroundColor: "white",
         borderRadius: 20,
-        alignSelf: "center"
+        alignSelf: "center",
+
     },
 })
 
