@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { ActivityIndicator, Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { useSelector } from 'react-redux';
 import { learnihonColors } from '../assets/colors';
@@ -19,7 +19,7 @@ const KanjiCard = () => {
             fontSize: "20em"
         }
     })
-
+    const [loadingSvg, setLoadingSvg] = useState(false);
     const [selectedItems, setSelectedItems] = useState<{ title: string, data: Kanji[] }[]>([]);
     const updateSelectedItems = (item: string, isSelected: Boolean) => {
         if (!isSelected) {
@@ -51,8 +51,10 @@ const KanjiCard = () => {
 
     const fetchXml = async () => {
         if (kanji) {
+            setLoadingSvg(true);
             const xml = await (await fetch(kanji?.image!)).text();
             setImgXml(xml);  
+            setLoadingSvg(false);
         }
     }
 
@@ -95,12 +97,18 @@ const KanjiCard = () => {
 
                     <Text style={kanjiCardStyle.text}>{kanji?.onyomi}</Text>
                     <Text style={kanjiCardStyle.text}>{kanji?.kunyomi}</Text>
-                    <SvgXml
+                    {loadingSvg ?
+                        (
+                            <View style = {kanjiCardStyle.loader}>
+                                <ActivityIndicator size="large" color={learnihonColors.main} />
+                            </View>
+                        )
+                        : (<SvgXml
                         xml={imgXml
                             .replace(/fill="#[0-9a-f]{6}"/g, `fill=${kanjiCardStyle.svg.color}`)}
                         width="200"
                         height="200"
-                />
+                    />)}
 
                 {!hasAnswered && (
                     <>
@@ -132,6 +140,12 @@ const kanjiCardStyle_light = StyleSheet.create({
         width: "100%",
         height: "100%"
     },
+    loader: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 200,
+        height: 200
+    },
     text: {
         color: "black"
     }
@@ -147,6 +161,12 @@ const kanjiCardStyle_dark = StyleSheet.create({
         alignItems: 'center',
         width: "100%",
         height: "100%"
+    },
+    loader: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 200,
+        height: 200
     },
     text: {
         color: "white"

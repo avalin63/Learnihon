@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
@@ -14,7 +14,7 @@ const KanjiPlaygroundList = () => {
     const kanjiPlaygroundListStyle = useColorScheme() == 'light' ? kanjiPlaygroundListStyle_light : kanjiPlaygroundListStyle_dark;
     const [search, setSearch] = React.useState("");
 
-
+    const [loadingList, setLoadingList] = useState(false);
     const searchResult: Kanji[] = useSelector(state => state.kanjiReducer.playgroundList);
     const dispatch = useDispatch();
 
@@ -29,20 +29,28 @@ const KanjiPlaygroundList = () => {
                 placeholderTextColor="gray"
                 value={search}
                 onChangeText={setSearch}
-                onBlur={async () => await (await searchKanjis(search.toLowerCase()))(dispatch)}
+                onBlur={async () => {
+                    setLoadingList(true);
+                    await (await searchKanjis(search.toLowerCase()))(dispatch);
+                    setLoadingList(false);
+                }}
             ></TextInput>
-            <FlatList 
-                numColumns={4}
-                data={searchResult}
-                renderItem={
-                    ({ item }) => (
-                        <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item))}} style={kanjiPlaygroundListStyle.entry}>
-                            <Text style={kanjiPlaygroundListStyle.entryText}>{item.character}</Text>
-                        </TouchableOpacity>
-                    )
-                }
-                keyExtractor={item => `basicListEntry-${item.character}`}>
-            </FlatList>
+            {loadingList ? (
+                <ActivityIndicator size="large" color={learnihonColors.main} />
+            ) : (
+                <FlatList
+                    numColumns={4}
+                    data={searchResult}
+                    renderItem={
+                        ({ item }) => (
+                            <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item)) }} style={kanjiPlaygroundListStyle.entry}>
+                                <Text style={kanjiPlaygroundListStyle.entryText}>{item.character}</Text>
+                            </TouchableOpacity>
+                        )
+                    }
+                    keyExtractor={item => `basicListEntry-${item.character}`}>
+                </FlatList>
+            )}
         </View>
     );
 };

@@ -18,6 +18,7 @@
     "@shopify/react-native-skia": "0.1.157",
     "expo": "~47.0.12",
     "expo-2d-context": "^0.0.3",
+    "expo-av": "~13.0.2",
     "expo-cli": "^6.3.0",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
@@ -31,8 +32,7 @@
     "react-native-web": "~0.18.9",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-    "rn-perfect-sketch-canvas": "^0.3.0",
-    "expo-av": "~13.0.2"
+    "rn-perfect-sketch-canvas": "^0.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
