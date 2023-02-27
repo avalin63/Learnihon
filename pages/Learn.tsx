@@ -10,7 +10,7 @@ const Learn = () => {
 
     return (
         <View style={learnStyle.container}>
-            <KanjiCard kanji="所"></KanjiCard>
+            <KanjiCard></KanjiCard>
         </View>
     );
 };

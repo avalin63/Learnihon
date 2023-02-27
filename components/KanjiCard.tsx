@@ -1,17 +1,14 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, useColorScheme } from 'react-native';
+import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { useSelector } from 'react-redux';
 import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 import { KanjiListByGrade } from '../model/kanjiListByGrades';
+import GradeChipList from './GradeChipList';
 import KanjiAnswerField from './KanjiAnswerField';
 
-type KanjiProps = {
-    kanji: string;
-}
-
-const KanjiCard = (props: KanjiProps) => {
+const KanjiCard = () => {
 
     var kanjiCardStyle = useColorScheme() == 'light' ? kanjiCardStyle_light : kanjiCardStyle_dark;
     const [answerTextColor, setAnswerTextColor] = useState(kanjiCardStyle.text.color); 
@@ -23,7 +20,25 @@ const KanjiCard = (props: KanjiProps) => {
         }
     })
 
-    const nextKanji = () => allKanjis[Math.floor(Math.random() * allKanjis.length)];
+    const [selectedItems, setSelectedItems] = useState<{ title: string, data: Kanji[] }[]>([]);
+    const updateSelectedItems = (item: string, isSelected: Boolean) => {
+        if (!isSelected) {
+            setSelectedItems([...selectedItems, {
+                title: item,
+                data: kanjis[item]
+            }]);
+        } else {
+            setSelectedItems(selectedItems.filter((selectedItem) => selectedItem.title !== item));
+        }
+    };
+
+    const nextKanji = () => {
+        if (selectedItems.length) {
+            var items= [].concat(...Object.values(selectedItems.map(it => it.data)))
+            return items[Math.floor(Math.random() * items.length)]
+        }
+        return allKanjis[Math.floor(Math.random() * allKanjis.length)]
+    };
 
     const [kanji, setKanji] = useState((): Kanji | null => { return null });
     const [imgXml, setImgXml] = useState('<svg></svg>');
@@ -32,8 +47,7 @@ const KanjiCard = (props: KanjiProps) => {
 
     var kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
 
-    const allKanjis: Kanji[] = [].concat(...Object.values(kanjis))
-
+    const allKanjis = [].concat(...Object.values(kanjis))
 
     const fetchXml = async () => {
         if (kanji) {
@@ -68,36 +82,41 @@ const KanjiCard = (props: KanjiProps) => {
     }
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={kanjiCardStyle.container}>
-            <ScrollView contentContainerStyle={kanjiCardStyle.container}
-                showsVerticalScrollIndicator={false}>
+        <View style={kanjiCardStyle.container}>
+            <GradeChipList onSelect={updateSelectedItems} />
 
-                <Text style={kanjiCardStyle.text}>{kanji?.onyomi}</Text>
-                <Text style={kanjiCardStyle.text}>{kanji?.kunyomi}</Text>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={kanjiCardStyle.container}>
 
-                <SvgXml
-                    xml={imgXml
-                        .replace(/fill="#[0-9a-f]{6}"/g, `fill=${kanjiCardStyle.svg.color}`)}
-                    width="200"
-                    height="200"
-            />
 
-            {!hasAnswered && (
-                <>
-                    <KanjiAnswerField answer={answer} setAnswer={setAnswer} />
+                <ScrollView contentContainerStyle={kanjiCardStyle.container}
+                    showsVerticalScrollIndicator={false}>
+
+                    <Text style={kanjiCardStyle.text}>{kanji?.onyomi}</Text>
+                    <Text style={kanjiCardStyle.text}>{kanji?.kunyomi}</Text>
+                    <SvgXml
+                        xml={imgXml
+                            .replace(/fill="#[0-9a-f]{6}"/g, `fill=${kanjiCardStyle.svg.color}`)}
+                        width="200"
+                        height="200"
+                />
+
+                {!hasAnswered && (
+                    <>
+                        <KanjiAnswerField answer={answer} setAnswer={setAnswer} />
                         <Button title="OK" color={learnihonColors.main} onPress={computeAnswer} />
-                </>
-            ) || (
-                <>
-                    <Text style={textAnswerStyle.text}>{kanji?.meaning}</Text>
-                    <Text style={kanjiCardStyle.text}>{answer}</Text>
+                    </>
+                ) || (
+                    <>
+                        <Text style={textAnswerStyle.text}>{kanji?.meaning}</Text>
+                        <Text style={kanjiCardStyle.text}>{answer}</Text>
                         <Button title="NEXT" color={learnihonColors.main} onPress={computeNext}/>
-                </>
-                    )}
-            </ScrollView>
-        </KeyboardAvoidingView>
+                    </>
+                        )}
+                </ScrollView>
+            </KeyboardAvoidingView>
+        </View>
 
     );
 }; 

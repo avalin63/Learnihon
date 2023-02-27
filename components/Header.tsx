@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { learnihonColors } from '../assets/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

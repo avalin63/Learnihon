@@ -11,12 +11,7 @@ import KanjiListCell from './KanjiListCell';
 const KanjiList = () => {
 
     const kanjiListStyle = useColorScheme() == 'light' ? kanjiListStyle_light : kanjiListStyle_dark;
-    const dispatch = useDispatch();
 
-
-
-    const [res, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
     var kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
 
     const [selectedItems, setSelectedItems] = useState<{title: string, data: Kanji[]}[]>([]);
@@ -30,12 +25,6 @@ const KanjiList = () => {
             setSelectedItems(selectedItems.filter((selectedItem) => selectedItem.title !== item));
         }
     };
-
-    useEffect(() => {
-
-
-
-    }, [dispatch]);
 
     return (
         <View>
