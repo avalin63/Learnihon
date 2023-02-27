@@ -7,5 +7,6 @@ export const learnihonColors = {
     "dark_2": "#1C1C1C",
     "dark_3": "#0D0D0D",
     "wrong": "#AA3D3D",
-    "correct": "#3DAA3D"
+    "correct": "#3DAA3D",
+    "warning": "#FAD63C"
 }

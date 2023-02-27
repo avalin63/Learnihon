@@ -11,6 +11,6 @@
     "\\redux\\reducers",
     "\\redux\\thunks"
   ],
-  "SelectedNode": "\\assets",
+  "SelectedNode": "\\components\\KanjiPlaygroundList.tsx",
   "PreviewInSolutionExplorer": false
 }

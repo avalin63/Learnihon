@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 import { KanjiListByGrade } from '../model/kanjiListByGrades';
+import { storeGuess } from '../storage/storage';
 import GradeChipList from './GradeChipList';
 import KanjiAnswerField from './KanjiAnswerField';
 
@@ -68,7 +69,9 @@ const KanjiCard = () => {
     }, [kanji]);
 
     const computeAnswer = () => {
-        setAnswerTextColor(isAnswerRight() ? learnihonColors.correct : learnihonColors.wrong);
+        var isCorrect = isAnswerRight();
+        setAnswerTextColor(isCorrect ? learnihonColors.correct : learnihonColors.wrong);
+        storeGuess(kanji?.character!, isCorrect);
         setHasAnswered(true);
     }
     const computeNext = () => {
