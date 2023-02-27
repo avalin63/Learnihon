@@ -1,8 +1,9 @@
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import React, { useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
+import { learnihonColors } from "../assets/colors";
 import { fetchKanjis } from "../redux/thunks/fetchKanjis";
 import TabBar from "./TabBar";
 
@@ -65,7 +66,7 @@ const splashscreenStyle = StyleSheet.create({
         width: "100%",
         height: "100%",
         position: "absolute",
-        backgroundColor: '#FF5C5C',
+        backgroundColor: learnihonColors.main,
     },
     title: {
         color: 'white',

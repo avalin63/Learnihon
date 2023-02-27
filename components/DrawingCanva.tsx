@@ -1,14 +1,15 @@
-import React, {useEffect, useRef, useState }  from 'react';
-import { SketchCanvas, SketchCanvasRef } from 'rn-perfect-sketch-canvas';
-import { StyleSheet, Button, View, Text, useColorScheme, Touchable, TouchableOpacity } from 'react-native';
+import Slider from '@react-native-community/slider';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button, StyleSheet, TouchableOpacity, useColorScheme, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import Slider  from '@react-native-community/slider'
+import { SketchCanvas, SketchCanvasRef } from 'rn-perfect-sketch-canvas';
 
 import { useSelector } from 'react-redux';
 import { Kanji } from '../model/kanji';
 import { KanjiMapper } from '../model/kanjiMapper';
 
 import { Eye, EyeOff } from "react-native-feather";
+import { learnihonColors } from '../assets/colors';
 
 type DrawingCanvaProps = {
     backgroundImage: string;
@@ -74,14 +75,14 @@ const DrawingCanva = (props: DrawingCanvaProps) => {
                 onValueChange={(val) => setStroke(val)}
                 minimumValue={5}
                 maximumValue={15}
-                minimumTrackTintColor={"#FF5C5C"}
+                minimumTrackTintColor={learnihonColors.main}
             />
             {isCanvasReady && (<View style={style.menu}>
-                <Button color="#FF5C5C" onPress={() => {
+                <Button color={learnihonColors.main} onPress={() => {
                     canvasRef.current?.reset();
                     setStroke(strokeWidth);
                 }} title="Reset" />
-                <Button color="#FF5C5C"
+                <Button color={learnihonColors.main}
                     onPress={() => {
                     canvasRef.current?.undo();
                     setStroke(strokeWidth);

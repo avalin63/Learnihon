@@ -1,10 +1,10 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, useColorScheme, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { SvgUri, SvgXml } from 'react-native-svg';
+import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, useColorScheme } from 'react-native';
+import { SvgXml } from 'react-native-svg';
 import { useSelector } from 'react-redux';
+import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 import { KanjiListByGrade } from '../model/kanjiListByGrades';
-import { KanjiMapper } from '../model/kanjiMapper';
 import KanjiAnswerField from './KanjiAnswerField';
 
 type KanjiProps = {
@@ -52,7 +52,7 @@ const KanjiCard = (props: KanjiProps) => {
     }, [kanji]);
 
     const computeAnswer = () => {
-        setAnswerTextColor(isAnswerRight() ? "green" : "red");
+        setAnswerTextColor(isAnswerRight() ? learnihonColors.correct : learnihonColors.wrong);
         setHasAnswered(true);
     }
     const computeNext = () => {
@@ -87,13 +87,13 @@ const KanjiCard = (props: KanjiProps) => {
             {!hasAnswered && (
                 <>
                     <KanjiAnswerField answer={answer} setAnswer={setAnswer} />
-                    <Button title="OK" color="#FF5C5C" onPress={computeAnswer} />
+                        <Button title="OK" color={learnihonColors.main} onPress={computeAnswer} />
                 </>
             ) || (
                 <>
                     <Text style={textAnswerStyle.text}>{kanji?.meaning}</Text>
                     <Text style={kanjiCardStyle.text}>{answer}</Text>
-                    <Button title="NEXT" color="#FF5C5C" onPress={computeNext}/>
+                        <Button title="NEXT" color={learnihonColors.main} onPress={computeNext}/>
                 </>
                     )}
             </ScrollView>

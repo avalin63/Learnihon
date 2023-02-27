@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, useColorScheme } from 'react-native';
+import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 
 interface kanjiListCellProps {
@@ -29,7 +30,7 @@ const cellStyle_light = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: '#e6e6e6',
+        backgroundColor: learnihonColors.light_2,
     },
     text: {
         color: "black",
@@ -51,7 +52,7 @@ const cellStyle_dark = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: '#1c1c1c',
+        backgroundColor: learnihonColors.dark_2,
     },
     text: {
         color: "white",

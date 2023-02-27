@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { useDispatch, useSelector } from 'react-redux';
+import { learnihonColors } from '../assets/colors';
 
 
 
@@ -35,7 +35,7 @@ const detailRadicalStyle_light = StyleSheet.create({
         width: 30,
     },
     svg: {
-        color: "#FF5C5C"
+        color: learnihonColors.main
     },
     radicalIcon: {
         position: "absolute"
@@ -55,7 +55,7 @@ const detailRadicalStyle_dark = StyleSheet.create({
         width: 30,
     },
     svg: {
-        color: "#FF5C5C"
+        color: learnihonColors.main
     },
     radicalIcon: {
         position: "absolute"

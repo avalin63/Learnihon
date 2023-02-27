@@ -1,21 +1,22 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { learnihonColors } from '../assets/colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const Header = () => {
 
     return (
-        <View style={headerStyle.container}>
+        <SafeAreaView style={headerStyle.container}>
             <Text style={headerStyle.title}>LEARNIHON</Text>
-        </View>
+        </SafeAreaView>
     );
 };
 
 const headerStyle = StyleSheet.create({
     container: {
-        backgroundColor: '#FF5C5C',
+        backgroundColor: learnihonColors.main,
         width: '100%',
-        padding: 10
     },
     title: {
         color: 'white',

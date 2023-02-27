@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { initKanjiListByGrade, KanjiListByGrade } from '../../model/kanjiListByGrades';
 import { KanjiMapper } from '../../model/kanjiMapper';
 import { setKanjis } from '../actions/setKanjis';

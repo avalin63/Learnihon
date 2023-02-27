@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { StyleSheet, TouchableNativeFeedback, useColorScheme, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabBarButtonProps, BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet, TouchableNativeFeedback, useColorScheme, View } from 'react-native';
 
-import { List as ListIcon } from "react-native-feather";
-import { Edit2 as PlaygroundIcon } from "react-native-feather";
-import { BookOpen as LearnIcon } from "react-native-feather";
+import { BookOpen as LearnIcon, Edit2 as PlaygroundIcon, List as ListIcon } from "react-native-feather";
 
+import { learnihonColors } from '../assets/colors';
+import Header from '../components/Header';
 import Learn from '../pages/Learn';
 import Playground from '../pages/Playground';
 import KanjiStackNavigator from './Stack';
-import Header from '../components/Header';
 
 
 
@@ -44,13 +42,13 @@ const LearnButton = (props: BottomTabBarButtonProps) => {
 
 const learnButtonStyle_light = StyleSheet.create({
     button: {
-        backgroundColor: "#FF5C5C",
+        backgroundColor: learnihonColors.main,
         width: 80,
         height: 80,
         borderRadius: 40,
     },
     button2: {
-        backgroundColor: "#f5f5f4",
+        backgroundColor: learnihonColors.light,
         width: 90,
         height: 90,
         borderRadius: 45,
@@ -60,13 +58,13 @@ const learnButtonStyle_light = StyleSheet.create({
 
 const learnButtonStyle_dark = StyleSheet.create({
     button: {
-        backgroundColor: "#FF5C5C",
+        backgroundColor: learnihonColors.main,
         width: 80,
         height: 80,
         borderRadius: 40,
     },
     button2: {
-        backgroundColor: "#2b2b2b",
+        backgroundColor: learnihonColors.dark,
         width: 90,
         height: 90,
         borderRadius: 45,
@@ -126,7 +124,7 @@ const tabOptions: BottomTabNavigationOptions = {
     tabBarShowLabel: false,
     headerShown: false,
     tabBarStyle: {
-        backgroundColor: "#FF5C5C",
+        backgroundColor: learnihonColors.main,
     },
     tabBarActiveTintColor: "white",
     tabBarInactiveTintColor: "black",

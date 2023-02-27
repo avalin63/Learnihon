@@ -1,9 +1,7 @@
 ﻿import React from 'react';
-import { View, StyleSheet, useColorScheme } from 'react-native';
-import { useSelector } from 'react-redux';
+import { StyleSheet, useColorScheme, View } from 'react-native';
+import { learnihonColors } from '../assets/colors';
 import KanjiCard from '../components/KanjiCard';
-import { Kanji } from '../model/kanji';
-import { KanjiListByGrade } from '../model/kanjiListByGrades';
 
 
 const Learn = () => {
@@ -23,7 +21,7 @@ const learnStyle_light = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#f5f5f5"
+        backgroundColor: learnihonColors.light
     }
 })
 
@@ -33,7 +31,7 @@ const learnStyle_dark = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2B2B2B',
+        backgroundColor: learnihonColors.dark,
     },
 });
 

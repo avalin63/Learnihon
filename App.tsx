@@ -9,6 +9,7 @@ import { Keyboard, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import { InitStack } from './navigation/Startup';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
+import { learnihonColors } from './assets/colors';
 
 
 export default function App() {
@@ -29,6 +30,6 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FF5C5C',
+        backgroundColor: learnihonColors.main,
     },
 });

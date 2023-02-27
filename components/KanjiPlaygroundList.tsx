@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 import { setSelectedKanji } from '../redux/actions/setSelectedKanji';
 import { searchKanjis } from '../redux/thunks/searchKanjis';
 
 
 
-interface kanjiPlaygroundListProps {
-    data: Kanji[]
-}
 
-const KanjiPlaygroundList = (props: kanjiPlaygroundListProps) => {
+const KanjiPlaygroundList = () => {
 
     const kanjiPlaygroundListStyle = useColorScheme() == 'light' ? kanjiPlaygroundListStyle_light : kanjiPlaygroundListStyle_dark;
     const [search, setSearch] = React.useState("");
@@ -60,7 +58,7 @@ const kanjiPlaygroundListStyle_light = StyleSheet.create({
         margin: 1,
         justifyContent: 'center',
         flex: 1,
-        backgroundColor: '#e6e6e6',
+        backgroundColor: learnihonColors.light_2,
     },
     entryText: {
         fontWeight: "bold",
@@ -90,7 +88,7 @@ const kanjiPlaygroundListStyle_dark = StyleSheet.create({
         margin: 1,
         justifyContent: 'center',
         flex: 1,
-        backgroundColor: '#1c1c1c',
+        backgroundColor: learnihonColors.dark_2,
     },
     entryText: {
         fontWeight: "bold",

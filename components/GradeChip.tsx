@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, useColorScheme, Animated  } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Check } from "react-native-feather";
+import { learnihonColors } from '../assets/colors';
 
 interface gradeChipProps {
     grade: number;
@@ -34,7 +34,7 @@ const GradeChip = (props: gradeChipProps) => {
 
 const style = StyleSheet.create({
     chip: {
-        backgroundColor: "#FF5C5C",
+        backgroundColor: learnihonColors.main,
         borderRadius: 10,
         margin: 5,
         justifyContent: "center",
@@ -54,7 +54,7 @@ const style = StyleSheet.create({
 
 const styleSELECTED = StyleSheet.create({
     chip: {
-        backgroundColor: "#FF5C5C",
+        backgroundColor: learnihonColors.main,
         borderRadius: 10,
         margin: 5,
         justifyContent: "center",

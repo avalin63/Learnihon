@@ -1,9 +1,11 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, useColorScheme, FlatList, ScrollView } from 'react-native';
-import Svg, { Defs, LinearGradient, Mask, Path, Rect, SvgUri, SvgXml, Text as SvgText } from 'react-native-svg';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { SvgXml } from 'react-native-svg';
+import { learnihonColors } from '../assets/colors';
 import DetailExamples from '../components/DetailExamples';
 import DetailRadical from '../components/DetailRadical';
 import { Kanji } from '../model/kanji';
+
 
 const Detail = ({route}) => {
     const kanji:Kanji = route.params.kanji;
@@ -64,7 +66,7 @@ const detailStyle_light = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#e4e4e4",
+        backgroundColor: learnihonColors.light_2,
         height: "100%",
         width: "100%"
     },
@@ -87,7 +89,7 @@ const detailStyle_light = StyleSheet.create({
     },
     meaningText: {
         fontSize: 20,
-        color: "#FF5C5C",
+        color: learnihonColors.main,
         fontWeight: "900",
         textAlign: "center"
     }
@@ -99,7 +101,7 @@ const detailStyle_dark = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#1c1c1c",
+        backgroundColor: learnihonColors.dark_2,
     },
     pronounciation: {
         alignItems: "center"
@@ -121,7 +123,7 @@ const detailStyle_dark = StyleSheet.create({
     },
     meaningText: {
         fontSize: 20,
-        color: "#FF5C5C",
+        color: learnihonColors.main,
         fontWeight: "900",
         textAlign: "center"
 

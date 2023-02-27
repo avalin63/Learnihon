@@ -1,10 +1,11 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Text, SectionList, View, StyleSheet, useColorScheme } from 'react-native';
+import { SectionList, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 import { KanjiListByGrade } from '../model/kanjiListByGrades';
-import KanjiListCell from './KanjiListCell';
 import GradeChipList from './GradeChipList';
+import KanjiListCell from './KanjiListCell';
 
 
 const KanjiList = () => {
@@ -43,7 +44,7 @@ const KanjiList = () => {
             {selectedItems.length ?
             (<SectionList
                 sections={selectedItems}
-                windowSize={100}
+                windowSize={50}
                 renderItem={
                     ({ item }) => <KanjiListCell kanji={item} />
                 }
@@ -69,7 +70,7 @@ const kanjiListStyle_light = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: "black",
-        backgroundColor: '#d5d5d5',
+        backgroundColor: learnihonColors.light_3,
     },
     text: {
         textAlign: "center",
@@ -93,7 +94,7 @@ const kanjiListStyle_dark = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: "white",
-        backgroundColor: '#0d0d0d',
+        backgroundColor: learnihonColors.dark_3,
     },
     text: {
         textAlign: "center",

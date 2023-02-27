@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
-import { FlatList, TextInput, StyleSheet, View } from "react-native";
+import React from "react";
+import { FlatList, StyleSheet, View } from "react-native";
 import GradeChip from './GradeChip';
 
 interface kanjiListSeachPanelProps {
