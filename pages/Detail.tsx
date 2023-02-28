@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { learnihonColors } from '../assets/colors';
 import DetailExamples from '../components/DetailExamples';
@@ -11,6 +11,8 @@ const Detail = ({route}) => {
     const kanji:Kanji = route.params.kanji;
     const detailStyle = useColorScheme() == 'light' ? detailStyle_light : detailStyle_dark;
 
+
+    const [loadingImg, setLoadingImg] = useState(false);
     const [iconXml, setIconXml] = useState('<svg></svg>');
     const [imgXml, setImgXml] = useState('<svg></svg>');
 
@@ -25,8 +27,10 @@ const Detail = ({route}) => {
 
     useEffect(() => {
         console.log(kanji)
-
-        fetchXml();
+        setLoadingImg(true);
+        fetchXml().then(_ => {
+            setLoadingImg(false);
+        });
     }, []);
 
 
@@ -36,11 +40,16 @@ const Detail = ({route}) => {
                 <Text style={detailStyle.text}>{kanji.onyomi}</Text>
                 <Text style={detailStyle.text}>{kanji.kunyomi}</Text>
             </View>
-            <SvgXml
+            {loadingImg ? 
+                (
+                    <View style={detailStyle.loader}>
+                        <ActivityIndicator size="large" color={learnihonColors.main} />
+                    </View>
+                ):(<SvgXml
                 xml={imgXml
                     .replace(/fill="#[0-9a-f]{6}"/g, `fill=${detailStyle.svg.color}`)}
                 width="100"
-                height="100"/>
+                height="100" />)}
 
             <Text style={detailStyle.tinyText}>{kanji.strokes + " strokes"}</Text>
             <Text style={detailStyle.meaningText}>{kanji.meaning}</Text>
@@ -92,6 +101,12 @@ const detailStyle_light = StyleSheet.create({
         color: learnihonColors.main,
         fontWeight: "900",
         textAlign: "center"
+    },
+    loader: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 100,
+        height: 100
     }
 })
 
@@ -127,6 +142,12 @@ const detailStyle_dark = StyleSheet.create({
         fontWeight: "900",
         textAlign: "center"
 
+    },
+    loader: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 100,
+        height: 100
     }
 });
 

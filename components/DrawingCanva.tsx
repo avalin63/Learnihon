@@ -11,11 +11,7 @@ import { KanjiMapper } from '../model/kanjiMapper';
 import { Eye, EyeOff } from "react-native-feather";
 import { learnihonColors } from '../assets/colors';
 
-type DrawingCanvaProps = {
-    backgroundImage: string;
-} 
-
-const DrawingCanva = (props: DrawingCanvaProps) => {
+const DrawingCanva = () => {
 
     const style = useColorScheme()  == 'light' ? style_light : style_dark;
 

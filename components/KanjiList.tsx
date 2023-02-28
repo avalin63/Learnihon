@@ -27,21 +27,21 @@ const KanjiList = () => {
     };
 
     return (
-        <View>
+        <View style={kanjiListStyle.container}>
             <GradeChipList onSelect={updateSelectedItems} />
 
             {selectedItems.length ?
             (<SectionList
-                sections={selectedItems}
-                windowSize={50}
-                renderItem={
-                    ({ item }) => <KanjiListCell kanji={item} />
-                }
-                renderSectionHeader={({ section }) => (
-                    <Text style={kanjiListStyle.sectionHeader}>{section.title}</Text>
-                )}
-                keyExtractor={item => `basicListEntry-${item.character}`}/>) 
-                : (
+                    sections={selectedItems}
+                    windowSize={50}
+                    renderItem={
+                        ({ item }) => <KanjiListCell kanji={item} />
+                    }
+                    renderSectionHeader={({ section }) => (
+                        <Text style={kanjiListStyle.sectionHeader}>{section.title}</Text>
+                    )}
+                    keyExtractor={item => `basicListEntry-${item.character}`}/>
+                ) : (
                     <View style={kanjiListStyle.container}>
                         <Text style={kanjiListStyle.text}>Select a grade</Text>
                     </View>
@@ -68,9 +68,7 @@ const kanjiListStyle_light = StyleSheet.create({
         opacity: 0.5
     },
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        flex: 1
     },
 })
 
@@ -92,9 +90,7 @@ const kanjiListStyle_dark = StyleSheet.create({
         opacity: 0.5
     },
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        flex: 1
     },
 })
 

@@ -76,13 +76,9 @@ const TabBar = () => {
 
     const Tab = createBottomTabNavigator();
     return (
-        <>
-        <Header/>
         <Tab.Navigator
         screenOptions={tabOptions}
-        initialRouteName="Learn"
-                
-        >
+        initialRouteName="Learn">
             <Tab.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
@@ -90,9 +86,8 @@ const TabBar = () => {
                     )
                 }}
                 name="List"
-            component={KanjiStackNavigator}
-            />
-        <Tab.Screen
+            component={KanjiStackNavigator}/>
+            <Tab.Screen
             options={{
                 tabBarIcon: ({ color }) => (
                     <LearnIcon color={color} width={32} height={32} />
@@ -111,8 +106,7 @@ const TabBar = () => {
                 }}
                 name="Playground"
                 component={Playground} />
-            </Tab.Navigator>
-        </>
+        </Tab.Navigator>
     );
 }
 

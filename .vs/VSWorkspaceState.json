@@ -3,14 +3,9 @@
     "",
     "\\assets",
     "\\components",
-    "\\model",
     "\\navigation",
-    "\\pages",
-    "\\redux",
-    "\\redux\\actions",
-    "\\redux\\reducers",
-    "\\redux\\thunks"
+    "\\pages"
   ],
-  "SelectedNode": "\\components\\KanjiPlaygroundList.tsx",
+  "SelectedNode": "\\pages\\List.tsx",
   "PreviewInSolutionExplorer": false
 }

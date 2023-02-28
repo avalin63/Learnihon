@@ -6,7 +6,7 @@ export type KanjiGuess = {
 }
 
 export const calcCorrectGuessesRatio = (guess: KanjiGuess): number => {
-    return (guess.totalCorrectGuesses / guess.totalGuesses) * 100;
+    return Math.round((guess.totalCorrectGuesses / guess.totalGuesses) * 100);
 }
 
 export const getColorByRatio = (ratio: number): string => {
