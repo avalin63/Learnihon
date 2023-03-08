@@ -16,6 +16,7 @@ const KanjiAnswerField = (props: kanjiAnswerFieldProps) => {
                 onChangeText={props.setAnswer}
                 value={props.answer}
                 placeholder="Answer here"
+                returnKeyType="send"
             />
         </View>
     );

@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { BottomTabBarButtonProps, BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, TouchableNativeFeedback, useColorScheme, View } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, useColorScheme, View } from 'react-native';
 
 import { BookOpen as LearnIcon, Edit2 as PlaygroundIcon, List as ListIcon } from "react-native-feather";
 
 import { learnihonColors } from '../assets/colors';
-import Header from '../components/Header';
 import Learn from '../pages/Learn';
 import Playground from '../pages/Playground';
 import KanjiStackNavigator from './Stack';
@@ -29,12 +28,12 @@ const LearnButton = (props: BottomTabBarButtonProps) => {
                 style={learnButtonStyle.button2}>
             </View>
 
-            <TouchableNativeFeedback onPress={props.onPress}>
+            <TouchableWithoutFeedback onPress={props.onPress}>
                 <View
                     style={learnButtonStyle.button}>
                     {props.children}
                 </View>
-            </TouchableNativeFeedback>
+            </TouchableWithoutFeedback>
         </View>
     )
 

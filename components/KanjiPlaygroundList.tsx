@@ -34,6 +34,7 @@ const KanjiPlaygroundList = () => {
                     await (await searchKanjis(search.toLowerCase()))(dispatch);
                     setLoadingList(false);
                 }}
+                returnKeyType="search"
             ></TextInput>
             {loadingList ? (
                 <ActivityIndicator size="large" color={learnihonColors.main} />

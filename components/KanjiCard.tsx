@@ -91,7 +91,7 @@ const KanjiCard = () => {
             <GradeChipList onSelect={updateSelectedItems} />
 
             <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
                 style={kanjiCardStyle.container}>
 
 
