@@ -17,7 +17,7 @@ const KanjiCard = () => {
         text: {
             color: answerTextColor,
             fontWeight: "bold",
-            fontSize: "20em"
+            fontSize: 20
         }
     })
     const [loadingSvg, setLoadingSvg] = useState(false);

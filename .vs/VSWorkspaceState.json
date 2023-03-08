@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
     "\\components",
+    "\\model",
     "\\navigation",
-    "\\pages"
+    "\\pages",
+    "\\redux",
+    "\\storage"
   ],
-  "SelectedNode": "\\pages\\List.tsx",
   "PreviewInSolutionExplorer": false
 }

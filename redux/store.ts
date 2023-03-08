@@ -13,8 +13,10 @@ const store = configureStore(
 		reducer,
 		middleware: getDefaultMiddleware({
 			serializableCheck: {
-				ignoredActions: [SET_KANJIS, SET_PLAYGROUND_LIST, SET_SELECTED_KANJI]
-				}
+				ignoredActions: [SET_KANJIS, SET_PLAYGROUND_LIST, SET_SELECTED_KANJI],
+				ignoredActionPaths: ['kanjiReducer'],
+				ignoredPaths: ['kanjiReducer']
+			}
 		})
 		
 	},);

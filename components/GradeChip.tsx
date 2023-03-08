@@ -46,7 +46,7 @@ const style = StyleSheet.create({
     text: {
         color: "white",
         fontWeight: "bold",
-        fontSize: "18em",
+        fontSize: 18,
         padding: 5
 
     },
@@ -68,7 +68,7 @@ const styleSELECTED = StyleSheet.create({
     text: {
         color: "white",
         fontWeight: "bold",
-        fontSize: "18em",
+        fontSize: 18,
         padding: 5
 
     },

@@ -28,7 +28,7 @@ const KanjiListCell = React.memo((props: kanjiListCellProps) => {
         }
     });
 
-    const memoizedValues = useMemo(async () => {
+    useMemo(async () => {
         const guess = await retrieveGuess(props.kanji.character);
         const ratio = guess ? await calcCorrectGuessesRatio(guess) : -1;
         setRatio(ratio);
@@ -63,7 +63,7 @@ const cellStyle_light = StyleSheet.create({
     kanji: {
         fontWeight: "bold",
         color: "black",
-        fontSize: "20em",
+        fontSize: 20,
         width: "10%"
     }
 })
@@ -84,7 +84,7 @@ const cellStyle_dark = StyleSheet.create({
     kanji: {
         fontWeight: "bold",
         color: "white",
-        fontSize: "20em",
+        fontSize: 20,
         width: "10%",
     },
 })

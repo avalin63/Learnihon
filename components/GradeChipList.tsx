@@ -9,8 +9,6 @@ interface kanjiListSeachPanelProps {
 
 const GradeChipList = (props: kanjiListSeachPanelProps) => {
 
-    const navigator = useNavigation();
-
     return (
         <View style={panelStyle.container}>
             <FlatList
