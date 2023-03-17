@@ -3,12 +3,12 @@ import { Kanji } from "./kanji";
 export class KanjiMapper {
 
     static ApiJsonToKanji(json: any): Kanji {
-        var radical: { character: string, position: string } = {
+        let radical: { character: string, position: string } = {
             character: json.radical.character,
             position: json.radical.position.icon
         };
 
-        var examples: { japanese: string, english: string }[] = [];
+        let examples: { japanese: string, english: string }[] = [];
 
         json.examples.forEach(
             (entry) => {

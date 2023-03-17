@@ -5,7 +5,7 @@ import { learnihonColors } from '../assets/colors';
 
 interface gradeChipProps {
     grade: number;
-    onSelect: (item: string, isSelected: Boolean) => void;
+    onSelect: (item: string, isSelected: boolean) => void;
 }
 
 const GradeChip = (props: gradeChipProps) => {

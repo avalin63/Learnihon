@@ -12,7 +12,7 @@ const KanjiList = () => {
 
     const kanjiListStyle = useColorScheme() == 'light' ? kanjiListStyle_light : kanjiListStyle_dark;
 
-    var kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
+    let kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
 
     const [selectedItems, setSelectedItems] = useState<{title: string, data: Kanji[]}[]>([]);
     const updateSelectedItems = (item: string, isSelected: Boolean) => {

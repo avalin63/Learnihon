@@ -54,7 +54,7 @@ const Detail = ({route}) => {
             <Text style={detailStyle.tinyText}>{kanji.strokes + " strokes"}</Text>
             <Text style={detailStyle.meaningText}>{kanji.meaning}</Text>
 
-            {kanji.radical.position && kanji.radical.character &&
+            {!!(kanji.radical.position && kanji.radical.character) &&
                 (<>
                     <Text style={detailStyle.title}>Radical</Text>
                     <DetailRadical character={kanji.radical.character} icon={iconXml}/>

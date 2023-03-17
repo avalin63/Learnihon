@@ -11,9 +11,9 @@ import KanjiAnswerField from './KanjiAnswerField';
 
 const KanjiCard = () => {
 
-    var kanjiCardStyle = useColorScheme() == 'light' ? kanjiCardStyle_light : kanjiCardStyle_dark;
+    let kanjiCardStyle = useColorScheme() == 'light' ? kanjiCardStyle_light : kanjiCardStyle_dark;
     const [answerTextColor, setAnswerTextColor] = useState(kanjiCardStyle.text.color); 
-    var textAnswerStyle = StyleSheet.create({
+    let textAnswerStyle = StyleSheet.create({
         text: {
             color: answerTextColor,
             fontWeight: "bold",
@@ -35,7 +35,7 @@ const KanjiCard = () => {
 
     const nextKanji = () => {
         if (selectedItems.length) {
-            var items= [].concat(...Object.values(selectedItems.map(it => it.data)))
+            let items= [].concat(...Object.values(selectedItems.map(it => it.data)))
             return items[Math.floor(Math.random() * items.length)]
         }
         return allKanjis[Math.floor(Math.random() * allKanjis.length)]
@@ -46,7 +46,7 @@ const KanjiCard = () => {
     const [hasAnswered, setHasAnswered] = useState(false);
     const [answer, setAnswer] = React.useState("");
 
-    var kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
+    let kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
 
     const allKanjis = [].concat(...Object.values(kanjis))
 
@@ -69,7 +69,7 @@ const KanjiCard = () => {
     }, [kanji]);
 
     const computeAnswer = () => {
-        var isCorrect = isAnswerRight();
+        let isCorrect = isAnswerRight();
         setAnswerTextColor(isCorrect ? learnihonColors.correct : learnihonColors.wrong);
         storeGuess(kanji?.character!, isCorrect);
         setHasAnswered(true);

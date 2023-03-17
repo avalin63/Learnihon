@@ -19,7 +19,6 @@ const DrawingCanva = () => {
     const [strokeWidth, setStroke] = useState(5);
     const [isCanvasReady, setIsCanvasReady] = useState(false);
     const [imgXml, setImgXml] = useState('<svg></svg>');
-    const [drawnStrokes, setDrawnStrokes] = useState(0);
     const selectedKanji = KanjiMapper.SerializedObjectToKanji(useSelector(state => state.kanjiReducer.selectedKanji));
 
     const [isVisible, setIsVisible] = useState(true);
@@ -30,10 +29,6 @@ const DrawingCanva = () => {
             setIsCanvasReady(true);
         }
     }, [canvasRef.current, selectedKanji]);
-
-    const getCanvasStrokeCount = () => {
-        return canvasRef.current?.toPoints().length;
-    }
 
     const fetchXml = async () => {
         if (selectedKanji instanceof Kanji) {

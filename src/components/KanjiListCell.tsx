@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
-import { calcCorrectGuessesRatio, getColorByRatio, KanjiGuess } from '../model/kanjiGuess';
+import { calcCorrectGuessesRatio, getColorByRatio } from '../model/kanjiGuess';
 import { retrieveGuess } from '../storage/storage';
 
 interface kanjiListCellProps {
@@ -17,7 +17,7 @@ const KanjiListCell = React.memo((props: kanjiListCellProps) => {
     const navigator = useNavigation();
     const [guessColor, setGuessColor] = useState(cellStyle.text.color);
     const [ratio, setRatio] = useState(-1);
-    var ratioStyle = StyleSheet.create({
+    let ratioStyle = StyleSheet.create({
         text:
         {
             color: guessColor,

@@ -1,10 +1,9 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import GradeChip from './GradeChip';
 
 interface kanjiListSeachPanelProps {
-    onSelect: (item: string, isSelected: Boolean) => void;
+    onSelect: (item: string, isSelected: boolean) => void;
 }
 
 const GradeChipList = (props: kanjiListSeachPanelProps) => {
