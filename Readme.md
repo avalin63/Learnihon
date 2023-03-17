@@ -23,7 +23,12 @@
 
 **Visuels** : 
 
-![Screenshots](./doc/Screenshots.png)
+*Maquettes de l'application :*
+![Screenshots](./doc/Learnihon_Sketches.png)
+
+*Captures d'écran de l'application :*
+![Screenshots](./doc/Learnihon_Screenshots.png)
+
 
 </br>
 
