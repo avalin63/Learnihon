@@ -1,9 +1,5 @@
-<div align = center>
 
-  <img src="https://codefirst.iut.uca.fr/git/arthur.valin/LEARNIHON/src/commit/902d9491ac24f5d1173d0547291235a33ead7ede/doc/Learnihon_Banner.png" />
-    
-</div>
-<div align = center>
+&nbsp; ![Learnihon](./doc/Learnihon_Banner.png)
 
 ---
 
