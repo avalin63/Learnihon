@@ -8,7 +8,7 @@ steps:
     commands:
       - cd src
       - npm install
-      - sonar-scanner -Dsonar.projectKey=PROJECT_NAME -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
+      - sonar-scanner -Dsonar.projectKey=Learnihon -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
         -Dsonar.login=$${PLUGIN_SONAR_TOKEN}
     secrets: [ SONAR_TOKEN ]
     settings:
