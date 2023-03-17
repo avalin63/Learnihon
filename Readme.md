@@ -2,12 +2,16 @@
 &nbsp; ![Learnihon](./doc/Learnihon_Banner.png)
 
 ---
+<div align = center>
 
-&nbsp; ![React Native](https://img.shields.io/badge/React%20Native-000?style=for-the-badge&logo=react&logoColor=blue&color=white)
 
----
+![React Native](https://img.shields.io/badge/React%20Native-000?style=for-the-badge&logo=react&logoColor=blue&color=white)
+<br>
+[![Quality gate](https://codefirst.iut.uca.fr/sonar/api/project_badges/quality_gate?project=Learnihon&token=8ca2bd563da7103d1c1c3d3a4b3d6cc73a621147)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Learnihon)
 
 </div>
+
+---
 
 ## Deploiement
 - [x] &nbsp; ![IOS](https://img.shields.io/badge/IOS-000?style=for-the-badge&logo=apple&logoColor=black&color=white)
