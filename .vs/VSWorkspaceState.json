@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\components",
-    "\\model",
-    "\\navigation",
-    "\\pages",
-    "\\redux",
-    "\\storage"
+    ""
   ],
+  "SelectedNode": "\\node_modules",
   "PreviewInSolutionExplorer": false
 }
