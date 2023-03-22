@@ -8,8 +8,9 @@ steps:
     commands:
       - cd src
       - npm install
-      - sonar-scanner -Dsonar.projectKey=Learnihon -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
-        -Dsonar.login=$${PLUGIN_SONAR_TOKEN}
+      - npm run test
+      - sonar-scanner -Dsonar.projectKey=Learnihon -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST}
+        -Dsonar.login=$${PLUGIN_SONAR_TOKEN} -Dsonar.javascript.lcov.reportPaths=./test/coverage
     secrets: [ SONAR_TOKEN ]
     settings:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
