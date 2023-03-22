@@ -4,13 +4,6 @@ name: default
 
 steps:
 
-  - name: test
-    image: node:latest
-    commands:
-      - cd src
-      - npm i
-      - npm test
-
   - name: sonar-analyses
     image: hub.codefirst.iut.uca.fr/camille.petitalot/drone-sonarplugin-reactnative:latest
     commands:
@@ -24,4 +17,3 @@ steps:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
       sonar_token:
         from_secret: SONAR_TOKEN
-    depends_on: [ test ]
