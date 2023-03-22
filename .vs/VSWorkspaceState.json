@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\assets",
+    "\\src\\components",
+    "\\src\\navigation",
+    "\\src\\redux",
+    "\\src\\redux\\actions",
+    "\\src\\redux\\reducers",
+    "\\src\\redux\\thunks",
+    "\\src\\storage"
   ],
-  "SelectedNode": "\\node_modules",
+  "SelectedNode": "\\src\\navigation\\TabBar.tsx",
   "PreviewInSolutionExplorer": false
 }
