@@ -9,6 +9,26 @@
     "web": "expo start --web",
     "test": "jest --coverage=true --coverageDirectory=./test/coverage"
   },
+
+  "jest": {
+    "preset": "jest-expo",
+    "verbose": true,
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "testMatch": [
+      "**.test.js"
+    ],
+    "testEnvironment": "node",
+    "testEnvironmentOptions": {
+      "browsers": [
+        "chrome",
+        "firefox",
+        "safari"
+      ]
+    }
+  },
+
   "dependencies": {
     "@benjeau/react-native-draw": "^0.8.3",
     "@jest/globals": "^29.5.0",
