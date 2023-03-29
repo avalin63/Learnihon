@@ -11,7 +11,7 @@ const reducer = {
 const store = configureStore(
 	{
 		reducer,
-		middleware: getDefaultMiddleware({
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
 			serializableCheck: {
 				ignoredActions: [SET_KANJIS, SET_PLAYGROUND_LIST, SET_SELECTED_KANJI],
 				ignoredActionPaths: ['kanjiReducer'],

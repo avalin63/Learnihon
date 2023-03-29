@@ -15,7 +15,7 @@ const KanjiList = () => {
     let kanjis: KanjiListByGrade = useSelector(state => state.kanjiReducer.kanjis);
 
     const [selectedItems, setSelectedItems] = useState<{title: string, data: Kanji[]}[]>([]);
-    const updateSelectedItems = (item: string, isSelected: Boolean) => {
+    const updateSelectedItems = (item: string, isSelected: boolean) => {
         if (!isSelected) {
             setSelectedItems([...selectedItems, {
                 title: item,
