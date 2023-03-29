@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import DrawingCanva from '../components/DrawingCanva';
+import DrawingCanvas from '../components/DrawingCanvas';
 import KanjiPlaygroundList from '../components/KanjiPlaygroundList';
 import LearnihonPage from './LearnihonPage';
 
@@ -8,7 +8,7 @@ const Playground = () => {
     return (
         <LearnihonPage>
             <KanjiPlaygroundList/>
-            <DrawingCanva/>
+            <DrawingCanvas/>
         </LearnihonPage>
     );
 };

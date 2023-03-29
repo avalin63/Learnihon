@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
-    "\\src\\components",
     "\\src\\navigation",
+    "\\src\\pages",
     "\\src\\redux",
     "\\src\\redux\\actions",
     "\\src\\redux\\reducers",
     "\\src\\redux\\thunks",
-    "\\src\\storage"
+    "\\src\\storage",
+    "\\src\\test"
   ],
-  "SelectedNode": "\\src\\navigation\\TabBar.tsx",
+  "SelectedNode": "\\src\\components\\KanjiListCell.tsx",
   "PreviewInSolutionExplorer": false
 }
