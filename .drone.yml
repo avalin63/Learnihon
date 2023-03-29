@@ -13,7 +13,7 @@ steps:
       - ls ./test/coverage
       - sonar-scanner -Dsonar.projectKey=Learnihon -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST}
         -Dsonar.login=$${PLUGIN_SONAR_TOKEN} -Dsonar.javascript.lcov.reportPaths=./test/coverage/lcov.info 
-        -Dsonar.exclusions=./test/coverage/lcov-report/**/*
+        -Dsonar.exclusions=**/lcov-report/**
     secrets: [ SONAR_TOKEN ]
     settings:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
