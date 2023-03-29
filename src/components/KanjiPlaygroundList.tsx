@@ -44,7 +44,7 @@ const KanjiPlaygroundList = () => {
                     data={searchResult}
                     renderItem={
                         ({ item }) => (
-                            <TouchableOpacity onPress={() => { dispatch(setSelectedKanji(item)) }} style={kanjiPlaygroundListStyle.entry}>
+                            <TouchableOpacity testID={"kanji-list-item"} onPress={() => { dispatch(setSelectedKanji(item)) }} style={kanjiPlaygroundListStyle.entry}>
                                 <Text style={kanjiPlaygroundListStyle.entryText}>{item.character}</Text>
                             </TouchableOpacity>
                         )
