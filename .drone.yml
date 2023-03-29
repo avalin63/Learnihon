@@ -9,7 +9,7 @@ steps:
     commands:
       - cd src
       - npm install
-      - npm run test
+      - npm run test --testResultsProcessor=jest-sonar-reporter
       - sonar-scanner -Dsonar.projectKey=Learnihon -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST}
         -Dsonar.login=$${PLUGIN_SONAR_TOKEN} -Dsonar.javascript.lcov.reportPaths=./test/coverage/lcov.info 
         -Dsonar.exclusions=src./test/coverage/lcov-report/**/*
