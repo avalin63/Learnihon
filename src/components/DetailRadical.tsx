@@ -5,12 +5,12 @@ import { learnihonColors } from '../assets/colors';
 
 
 
-interface detailRadicalProps {
+interface DetailRadicalProps {
     character: string,
     icon: string
 }
 
-const DetailRadical = (props: detailRadicalProps) => {
+const DetailRadical = (props: DetailRadicalProps) => {
 
     const detailRadicalStyle = useColorScheme() == 'light' ? detailRadicalStyle_light : detailRadicalStyle_dark;
     return (

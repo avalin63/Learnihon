@@ -1,6 +1,6 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { useState } from 'react';
 import { SectionList, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { learnihonColors } from '../assets/colors';
 import { Kanji } from '../model/kanji';
 import { KanjiListByGrade } from '../model/kanjiListByGrades';

@@ -7,7 +7,7 @@ export const retrieveGuess = async (kanji: string) => {
         if (value === null) {
             return null;
         }
-        const guess: KanjiGuess = await JSON.parse(value!)
+        const guess: KanjiGuess = await JSON.parse(value)
         return guess;
     } catch (error) {
         console.log(error)

@@ -6,11 +6,11 @@ import { Kanji } from '../model/kanji';
 import { calcCorrectGuessesRatio, getColorByRatio } from '../model/kanjiGuess';
 import { retrieveGuess } from '../storage/storage';
 
-interface kanjiListCellProps {
+interface KanjiListCellProps {
     kanji: Kanji;
 }
 
-const KanjiListCell = React.memo((props: kanjiListCellProps) => {
+const KanjiListCell = React.memo((props: KanjiListCellProps) => {
 
     const cellStyle = useColorScheme() == 'light' ? cellStyle_light : cellStyle_dark;
 
@@ -30,7 +30,7 @@ const KanjiListCell = React.memo((props: kanjiListCellProps) => {
 
     useMemo(async () => {
         const guess = await retrieveGuess(props.kanji.character);
-        const ratio = guess ? await calcCorrectGuessesRatio(guess) : -1;
+        const ratio = guess ? calcCorrectGuessesRatio(guess) : -1;
         setRatio(ratio);
     }, []);
 

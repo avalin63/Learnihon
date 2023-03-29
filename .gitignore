@@ -12,4 +12,4 @@ web-build/
 node_modules/
 # macOS
 .DS_Store
-./src/test/coverage
+./src/test/coverage/lcov-report/

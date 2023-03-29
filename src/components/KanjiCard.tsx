@@ -22,7 +22,7 @@ const KanjiCard = () => {
     })
     const [loadingSvg, setLoadingSvg] = useState(false);
     const [selectedItems, setSelectedItems] = useState<{ title: string, data: Kanji[] }[]>([]);
-    const updateSelectedItems = (item: string, isSelected: Boolean) => {
+    const updateSelectedItems = (item: string, isSelected: boolean) => {
         if (!isSelected) {
             setSelectedItems([...selectedItems, {
                 title: item,
@@ -53,7 +53,7 @@ const KanjiCard = () => {
     const fetchXml = async () => {
         if (kanji) {
             setLoadingSvg(true);
-            const xml = await (await fetch(kanji?.image!)).text();
+            const xml = await (await fetch(kanji?.image)).text();
             setImgXml(xml);  
             setLoadingSvg(false);
         }

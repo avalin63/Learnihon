@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
-interface kanjiAnswerFieldProps { 
+interface KanjiAnswerFieldProps { 
     answer: string,
     setAnswer: React.Dispatch<React.SetStateAction<string>>
 }
 
-const KanjiAnswerField = (props: kanjiAnswerFieldProps) => {
+const KanjiAnswerField = (props: KanjiAnswerFieldProps) => {
 
 
     return (

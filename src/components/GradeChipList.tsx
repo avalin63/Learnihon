@@ -2,11 +2,11 @@ import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import GradeChip from './GradeChip';
 
-interface kanjiListSeachPanelProps {
+interface KanjiListSeachPanelProps {
     onSelect: (item: string, isSelected: boolean) => void;
 }
 
-const GradeChipList = (props: kanjiListSeachPanelProps) => {
+const GradeChipList = (props: KanjiListSeachPanelProps) => {
 
     return (
         <View style={panelStyle.container}>

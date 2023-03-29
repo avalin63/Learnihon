@@ -3,12 +3,12 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Check } from "react-native-feather";
 import { learnihonColors } from '../assets/colors';
 
-interface gradeChipProps {
+interface GradeChipProps {
     grade: number;
     onSelect: (item: string, isSelected: boolean) => void;
 }
 
-const GradeChip = (props: gradeChipProps) => {
+const GradeChip = (props: GradeChipProps) => {
 
     const [chipStyle, setChipStyle] = useState(style);
 

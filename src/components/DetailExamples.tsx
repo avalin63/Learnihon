@@ -3,11 +3,11 @@ import { FlatList, StyleSheet, Text, useColorScheme, View } from 'react-native';
 
 
 
-interface detailExamplesProps {
+interface DetailExamplesProps {
     data: { japanese: string, english: string }[]
 }
 
-const DetailExamples = (props: detailExamplesProps) => {
+const DetailExamples = (props: DetailExamplesProps) => {
 
     const detailExamplesStyle = useColorScheme() == 'light' ? detailExamplesStyle_light : detailExamplesStyle_dark;
 
