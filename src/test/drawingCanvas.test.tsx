@@ -4,7 +4,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { render, screen} from '@testing-library/react-native'
 import testReducer from "./testReducer";
 import KanjiPlaygroundList from "../components/KanjiPlaygroundList";
-
+import {expect} from '@jest/globals';
+import '@testing-library/jest-native/extend-expect';
 
 jest.useFakeTimers();
 
@@ -32,5 +33,8 @@ describe('<KanjiPlaygroundList/>', () => {
             </Wrapper>)
 
         expect(screen.queryAllByTestId("kanji-list-item")).toHaveLength(expectedList.length);
+        expectedList.forEach( (value, index) => {
+            expect(screen.queryAllByTestId("kanji-list-item")[index]).toHaveTextContent(value.character)
+        })
     })
 });
