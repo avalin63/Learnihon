@@ -7,7 +7,9 @@
 
 ![React Native](https://img.shields.io/badge/React%20Native-000?style=for-the-badge&logo=react&logoColor=blue&color=white)
 <br>
-[![Quality gate](https://codefirst.iut.uca.fr/sonar/api/project_badges/quality_gate?project=Learnihon&token=8ca2bd563da7103d1c1c3d3a4b3d6cc73a621147)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Learnihon)
+[![Reliability Rating](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Learnihon&metric=reliability_rating&token=e93316f58890346668f0f99c4d84732fbaf0cf48)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Learnihon)
+[![Maintainability Rating](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Learnihon&metric=sqale_rating&token=e93316f58890346668f0f99c4d84732fbaf0cf48)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Learnihon)
+[![Security Rating](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Learnihon&metric=security_rating&token=e93316f58890346668f0f99c4d84732fbaf0cf48)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Learnihon)
 
 </div>
 
